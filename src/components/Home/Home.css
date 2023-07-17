@@ -1,42 +1,111 @@
 /* Estilo del inicio*/
 
+/* Estilo general */
+.contHome{
+    height: 100%;
+}
+
+.backgroundGif{
+    width: 100%;
+    position: absolute;
+    opacity: 0.5;
+}
+
 /* Logo */
 .contLogo{
-    margin-top: 120px;
+    position: relative;
+    z-index: 2;
+    height: 50vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    letter-spacing: -0.794434px;
 }
 .logoHome{
-    width: 180px;
+    width: 200px;
 }
+
 .musicaP{
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
     font-size: 22px;
-    margin-top: 8px;
+    color: #26262E;
+    margin-top: 15px;
 }
 
 /* Pie de inicio */
 
 .pieInicio{
+    height: 50vh;
+    position: relative;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: linear-gradient(180deg, rgba(253, 254, 255, 0) 0%, #FDFEFF 45.83%, #FDFEFF 100%);
+
 }
 
 /* Botones */
 .contBotones{
+    padding-top: 10vh;
     width: 100%;
-    margin-top: 120px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
+    gap: 15px;
 }
 .contIniciarS{
-    margin-top: 20px;
+    margin-top: 50px;
     display: flex;
     align-items: center;
 }
 .iniciarS{
     text-decoration: none;
+    font-weight: 500;
+    font-family: 'Rubik', sans-serif;
+    color: #26262E;
 }
+.linkButton{
+    width: 100%;
+    text-align: center;
+}
+.btnStandardOrange {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
+    align-self: center;
+    width: 85%;
+    height: 3rem;
+    color: white;
+    background-color: #FF8E0A;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border: none;
+    font-size: 17px;
+}
+
+.btnStandardBorder {
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+    width: 85%;
+    height: 3rem;
+    color: #26262E;
+    background-color: transparent;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border: solid 2px #26262E;
+    font-size: 17px;
+}
+
+.iconosBtn{
+    margin-right: 10px;
+}
+
+/* background: linear-gradient(180deg, rgba(253, 254, 255, 0) 0%, #FDFEFF 45.83%, #FDFEFF 100%); */
+
+
+

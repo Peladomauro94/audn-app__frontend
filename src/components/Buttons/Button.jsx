@@ -1,7 +1,8 @@
 import React from 'react'
+import './ButtonStyle.css'
 
 export const Button = (props) => {
   return (
-    <button className='btn-standard'>{props.texto}</button>
+    <button className='btnStandard' >{props.texto}</button>
   )
 }
