@@ -3,6 +3,7 @@ import { RegisterEmail } from './registerEmail'
 import { RegisterName } from './RegisterName'
 import './index.css'
 import { Link } from 'react-router-dom'
+import { Buttons } from '../Buttons'
 
 export const Register = () => {
     const [onView, setOnView] = useState (true);
@@ -54,8 +55,7 @@ export const Register = () => {
           </div>
             { onView ? <RegisterEmail value={email} handleEmailValue={handleEmailValue} errorMsg={emailError} /> : <RegisterName nameValue={name} passwordValue={password} handleNameValue={handleNameValue} PasswordValue={handlePasswordValue} nameError={nameError} passwordError={passwordError}/>  }
           </div>
-
-        <button className='button-type1' onClick={registerButtonHanndle}>Continuar</button>
+        <Buttons text={'Continuar'} onClick={registerButtonHanndle}/>
     </div>
   )
 }
