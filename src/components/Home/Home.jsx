@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './Home.css'
+import { Button } from '../buttons/button'
 
 export const Home = () => {
   return (
@@ -11,9 +12,9 @@ export const Home = () => {
       </div>
       <div className='pieInicio'>
         <div className='contBotones'>
-        <button>Registrarse Gratis</button>
-        <button>Continuar con Google</button>
-        <button>Continuar con Apple</button>
+          <Button texto="Registrarse Gratis" />
+          <button>Continuar con Google</button>
+          <button>Continuar con Apple</button>
         </div>
         <div className='contIniciarS'><Link className='iniciarS'>Iniciar Sesión</Link></div>
       </div>
