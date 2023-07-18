@@ -11,3 +11,9 @@
     border: none;
     font-size: 17px;
 }
+
+.btnStandard.disabled {
+    cursor: not-allowed;
+    color: white;
+    background-color: #E4E6E8;
+}

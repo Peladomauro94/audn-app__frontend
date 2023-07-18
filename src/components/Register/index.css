@@ -1,5 +1,5 @@
 .register__main-div{
-    background: linear-gradient(to top, rgba(236, 238, 239, 0.976) 90%, #ff8d0a28 100%);    display: flex;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.976) 90%, #ff8d0a40 100%);    display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
@@ -18,6 +18,7 @@
 .register__container{
     display: flex;
     flex-direction: column;
+    height: 100vh;
 }
 
 .register__title{
@@ -25,20 +26,12 @@
     font-size: 19px;
 }
 
-.button-type1{
-    font-family: 'Rubik', sans-serif;
-    font-weight: 400;
-    align-self: center;
-    width: 85%;
-    height: 3rem;
-    color: white;
-    background-color: #FF8E0A;
-    border-top-right-radius: 20px;
-    border-bottom-left-radius: 20px;
+.register_arrow-back-button{
+    background-color: transparent;
     border: none;
-    font-size: 17px;
-    
+    padding: 0px;
 }
+
 
 
 .register-content{
@@ -57,10 +50,14 @@
 }
 
 .register__form{
+    align-self: center;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     width: 85%;
     margin-top: 1.5rem;
+    padding-bottom: 2rem;
 }
 
 .register__input-div{
@@ -68,6 +65,7 @@
     flex-direction: column;
     width: 100%;
 }
+
 
 .register__input-label{
     font-weight: 500;
@@ -81,9 +79,21 @@
     color: black;
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
-    border: 2px solid #FF8E0A;
+    border: 2px solid #E4E6E8;
     font-size: 18px;
     margin-top: 1rem;
+}
+
+.register__input.failed{
+    border: 2px solid #EA0F0F;
+}
+
+.register__input.acepted{
+    border: 2px solid #03A400;
+}
+
+.imput-password{
+    width: 100%;
 }
 
 
@@ -95,23 +105,44 @@
 
 }
 
+.register__input-span.failed{
+    color:#EA0F0F;
+
+}
+
+.register__input-span.acepted{
+    color:#03A400;
+
+}
+
 .register__second-input{
     position: relative;
     margin-top: 10%;
 }
 
+.register__password-div{
+    width: 100%;
+    position: relative;
+}
+
+.register__input.imput-password{
+    width: 93%;
+}
+
 .register__input-eye{
     position: absolute;
-    bottom: 3.1rem;
-    right: 1.5rem;
+    top: 1.5rem;
+    right: 1rem;
     width: 2rem;
     height: 2rem;
+    
 }
 
 .register__confirm-terms-div{
     display: flex;
     align-items: center;
     font-size: 14px;
+    margin-top: 12px;
 }
 
 .checkbox{
@@ -139,6 +170,10 @@
     text-decoration: none;
     color: #FF8E0A;
     font-weight: 500;
+}
+
+.d-none{
+    display:none
 }
 
 
