@@ -1,9 +1,9 @@
 .register__main-div{
-    background: linear-gradient(to top, rgba(236, 238, 239, 0.976) 90%, #ff8d0a28 100%);    display: flex;
+    background: linear-gradient(to top, rgba(236, 238, 239, 0.976) 90%, #ff8d0a28 100%);    
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
-    
 }
 
 .register__top{
@@ -140,5 +140,3 @@
     color: #FF8E0A;
     font-weight: 500;
 }
-
-

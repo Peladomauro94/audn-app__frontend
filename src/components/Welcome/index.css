@@ -1,7 +1,7 @@
 /* Estilo del inicio*/
 
 /* Estilo general */
-.contHome{
+.contWelcome{
     height: 100%;
 }
 
@@ -23,7 +23,7 @@
     align-items: center;
     letter-spacing: -0.794434px;
 }
-.logoHome{
+.logoWelcome{
     width: 200px;
 }
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import './ButtonStyle.css'
+import './index.css'
 
 export const Buttons = ({text, onClick}) => {
   return (
