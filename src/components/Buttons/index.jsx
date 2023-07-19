@@ -1,7 +1,7 @@
 import React from 'react'
-import './ButtonStyle.css'
+import './index.css'
 
-export const Buttons = ({text, onClick, buttonOff}) => {
+export const Buttons = ({text, onClick}) => {
   return (
     <button className='btnStandard' onClick={onClick} >{text}</button>
   )

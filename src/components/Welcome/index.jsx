@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import './Home.css' 
+import './index.css' 
 
-export const Home = () => {
+export const Welcome = () => {
   return (
-    <div className='contHome'>
+    <div className='contWelcome'>
       <img className='backgroundGif' src="../../public/gif-background.gif" alt="" />
       <div className='contLogo'>
         <div><img className='logoHome' src="../../public/logo-large.png" alt="" /></div>          

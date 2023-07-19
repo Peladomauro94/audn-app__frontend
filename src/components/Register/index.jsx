@@ -14,9 +14,8 @@ export const Register = () => {
   const [validateEmail, setValidateEmail] = useState("");
   const [validateName, setValidateName] = useState("");
   const [validatePassword, setValidatePassword] = useState("");
-  const [buttonActive, setButtonActive] = useState("disabled");
-  const [passwordOnView, setPasswordOnView] = useState("")
-  const [isChecked, setIsCheched] = useState(false)
+  const [passwordOnView, setPasswordOnView] = useState("");
+  const [isChecked, setIsCheched] = useState(false);
 
 
   const handleEmailValue = (e) => {
@@ -28,9 +27,7 @@ export const Register = () => {
     } else {
       setEmailError("");
     }
-    if(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)){
-      setButtonActive("")
-    }
+
 
 
   };
@@ -51,7 +48,7 @@ export const Register = () => {
     const passwordValue = e.target.value;
     setPassword(passwordValue);
     if (!passwordValue) {
-      setPasswordError("Password must have at almost 8 caracters.");
+      setPasswordError("Password must have at almost 8 characters.");
       setValidatePassword("failed")
     } else {
       setPasswordError("");
@@ -117,10 +114,10 @@ export const Register = () => {
           
           <span className="register__title">Crear Cuenta</span>
         </div>
-        <form action="" className="register__form">
+        <form action="" className="register__form" onSubmit="submit">
           <div className="register-content">
             <span className="register__question">
-              Ingresa un nombre de usuario y contraseña.
+              { onView === "submit1" ? "¿Cuál es tu correo electrónico?" : "Ingresa un nombre de usuario y contraseña."}
             </span>
             <div
               className={`register__form ${
@@ -139,6 +136,7 @@ export const Register = () => {
                 onChange={handleEmailValue}
                 type="text"
                 placeholder="example@audn.com"
+                required
               />
               <span className={`register__input-span ${validateEmail}`}>{emailError}</span>
             </div>
@@ -161,6 +159,7 @@ export const Register = () => {
                   onChange={handleNameValue}
                   type="text"
                   placeholder="Juan Perez"
+                  required
                 />
                 <span className={`register__input-span ${validateName}`}>{nameError}</span>
               </div>
@@ -179,6 +178,7 @@ export const Register = () => {
                     value={password}
                     onChange={handlePasswordValue}
                     placeholder="Password"
+                    required
                   />
                   <img
                     className="register__input-eye"
@@ -190,7 +190,7 @@ export const Register = () => {
 
                 <span className={`register__input-span ${validatePassword}`}>{passwordError}</span>
                 <div className="register__confirm-terms-div">
-                  <div className="checkbox" checked={isChecked} onClick={handleCheckChange}>
+                  <div className="checkbox" checked={isChecked} onClick={handleCheckChange} required>
                     {isChecked && <img
                       className="checkbox__checked-img"
                       src="\checked-image.png"

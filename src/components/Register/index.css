@@ -40,6 +40,7 @@
     flex-direction: column;
     margin-top: 2.5rem;
     max-width: 390px;
+    width: 85%;
 }
 
 .register__question{
@@ -54,7 +55,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 85%;
+    width: 100%;
     margin-top: 1.5rem;
     padding-bottom: 2rem;
 }
@@ -68,7 +69,7 @@
 
 .register__input-label{
     font-weight: 500;
-    font-size: 23px;
+    font-size: 20px;
 }
 
 .register__input{
