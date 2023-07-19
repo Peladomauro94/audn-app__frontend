@@ -4,10 +4,11 @@
     align-items: center;
     background: linear-gradient(to top, rgba(236, 238, 239, 0.976) 90%, #ff8d0a28 100%);
     height: 100vh;
-    padding-top: 30px;
+    justify-content: space-between;
 }
 
 .titulosHome{
+    margin-top: 30px;
     width: 90%;
     display: flex;
     justify-content: space-between;
@@ -20,10 +21,11 @@
 .iconosTit{
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
 }
 
 .contBoxes{
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,4 +46,21 @@
 
 .fotoBox{
     border-bottom-left-radius: 20px;
+}
+
+.textBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5%;
+    gap: 5%;
+}
+
+.tituloBox{
+    font-weight: 600;
+}
+
+.textBox > p{
+    margin: 0px;
+    font-size: 14px;
 }

@@ -1,0 +1,25 @@
+.contNavbar{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    margin-bottom: 5%;
+}
+
+.seccionesNav > p {
+    margin: 0px;
+}
+
+.seccionesNav{
+    color: #26262E;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+    text-decoration: none;
+}
+
