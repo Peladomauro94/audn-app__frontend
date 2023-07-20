@@ -1,4 +1,6 @@
-.contHome{
+/* VENTANA HOME */
+
+.contHomeOn{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -6,6 +8,16 @@
     height: 100vh;
     justify-content: space-between;
 }
+
+.contHomeOff{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to top, rgba(236, 238, 239, 0.976) 90%, #ff8d0a28 100%);
+    height: 100vh;
+    justify-content: space-between;
+}
+
 
 .titulosHome{
     margin-top: 30px;
@@ -38,6 +50,7 @@
     height: 5rem;
     color: black;
     background-color: white;
+    text-decoration: none;
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
     border: solid 0px black;
@@ -64,3 +77,144 @@
     margin: 0px;
     font-size: 14px;
 }
+
+/* VENTANA SEARCHER */
+
+.contSearcherOn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to top, rgba(236, 238, 239, 0.976) 90%, #ff8d0a28 100%);
+    height: 100vh;
+    justify-content: space-between;
+}
+
+.contSearcherOff{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to top, rgba(236, 238, 239, 0.976) 90%, #ff8d0a28 100%);
+    height: 100vh;
+    justify-content: space-between;
+}
+
+.mainSearcher{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulosSearcher{
+    margin-top: 30px;
+    width: 90%;
+    display: flex;
+    font-weight: 600;
+    font-size: 22px;
+    padding: 5%;
+}
+
+.formSearcher{
+    display: flex;
+    justify-content: flex-start;
+    width: 90%;
+    height: 2.5rem;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border: 2px solid #BFC0C1;
+}
+
+.searchingImg{
+    width: 24px;
+    margin-left: 10px;
+}
+
+.searcherInput{
+    background-color: transparent;
+    width: 80%;
+    margin-left: 20px;
+    font-family: 'Rubik', sans-serif;
+    font-size: 16px;
+    color: black;
+    border: none;
+    outline: none;
+}
+
+.searcherInput::placeholder{
+    color: #BFC0C1;
+}
+
+.contTop{
+    width: 100%;
+    margin: 7% 0% 7% 0%;    
+    display: flex;
+}
+
+.topVeinteText{
+    font-weight: 600;
+    margin-left: 5%;
+    font-size: 15px;
+}
+
+.hrStyle{
+    width: 70%;
+    margin-right: 5%;
+    background-color: #BFC0C1;
+}
+
+/* CARDS */
+
+.contCards{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6%;
+    overflow: scroll;
+}
+
+.card{
+    width: 42%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titleSingle{
+    margin: 10px 0px 0px 0px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.artistSingle{
+    margin: 5px 0px 0px 0px;
+    font-size: 13px;
+    color: #BFC0C1;
+}
+
+.imgCard{
+    width: 100%;
+}
+
+/* VENTANA PERFIL */
+
+.contUserOn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to top, rgba(236, 238, 239, 0.976) 90%, #ff8d0a28 100%);
+    height: 100vh;
+    justify-content: space-between;
+}
+
+.contUserOff{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to top, rgba(236, 238, 239, 0.976) 90%, #ff8d0a28 100%);
+    height: 100vh;
+    justify-content: space-between;
+}
+
+
+

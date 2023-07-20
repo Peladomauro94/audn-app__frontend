@@ -6,6 +6,8 @@ import App from "./App.jsx";
 import { Register } from "./components/Register";
 import { Login } from "./components/Login";
 import { Home } from "./components/Home";
+import { Cupido } from "./components/CupidoMusical";
+import { Contextual } from "./components/MusicaContextual";
 
 
 const router = createBrowserRouter([
@@ -24,6 +26,14 @@ const router = createBrowserRouter([
   {
     path:"/home",
     element: <Home/>
+  },
+  {
+    path:"/cupidomusical",
+    element: <Cupido/>
+  },
+  {
+    path:"/contextual",
+    element: <Contextual/>
   }
 ]);
 
