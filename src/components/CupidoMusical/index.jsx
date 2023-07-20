@@ -1,8 +1,8 @@
 import React from 'react'
 import './index.css'
 
-export const Searcher = () => {
+export const Cupido = () => {
   return (
-    <div>Soy el searcher </div>
+    <div>Soy cupido musical</div>
   )
 }
