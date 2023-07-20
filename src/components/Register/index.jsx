@@ -14,8 +14,9 @@ export const Register = () => {
   const [validateEmail, setValidateEmail] = useState("");
   const [validateName, setValidateName] = useState("");
   const [validatePassword, setValidatePassword] = useState("");
-  const [passwordOnView, setPasswordOnView] = useState("");
+  const [passwordOnView, setPasswordOnView] = useState("hidden");
   const [isChecked, setIsCheched] = useState(false);
+  const [buttonActive, setButtonActive] = useState("disabled");
 
 
   const handleEmailValue = (e) => {
@@ -26,6 +27,11 @@ export const Register = () => {
       setValidateEmail("failed")
     } else {
       setEmailError("");
+    }
+    if(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)){
+      setButtonActive("")
+    } else {
+      setButtonActive("disabled")
     }
 
 
@@ -63,6 +69,7 @@ export const Register = () => {
   const registerButtonHanndle = (e) => {
     e.preventDefault();
     validateForm();
+    setButtonActive("disabled")
   };
 
   const validateForm = (mail, pass, nam) => {
@@ -81,12 +88,16 @@ export const Register = () => {
       } else {
         setNameError("");
       }
-      if (password.length < 8 || password.length > 25) {
+      
         if (password.length < 8 || password.length > 25) {
           setPasswordError("Please enter a valid password");
           return false;
+        } 
+        
+        if(isChecked === false){
+          return false
         }
-      }
+      
     }
     return;
   };
@@ -211,7 +222,7 @@ export const Register = () => {
               </div>
             </div>
           </div>
-          <Buttons text={"Continuar"} onClick={registerButtonHanndle} />
+          <Buttons text={"Continuar"} onClick={registerButtonHanndle} style={buttonActive}/>
         </form>
       </div>
     </div>

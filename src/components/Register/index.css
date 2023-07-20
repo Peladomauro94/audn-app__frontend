@@ -1,5 +1,6 @@
 .register__main-div{
-    background: linear-gradient(to top, rgba(255, 255, 255, 0.976) 90%, #ff8d0a40 100%);    display: flex;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.976) 90%, #ff8d0a40 100%); 
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
@@ -76,12 +77,16 @@
     font-family: 'Rubik', sans-serif;
     padding-left: 1rem;
     height: 2.5rem;
-    color: black;
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
     border: 2px solid #E4E6E8;
     font-size: 18px;
     margin-top: 1rem;
+    
+}
+
+.register__input:hover{
+    border: 2px solid #FF8E0A;
 }
 
 .register__input.failed{

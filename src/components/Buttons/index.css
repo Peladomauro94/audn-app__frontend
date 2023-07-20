@@ -10,10 +10,14 @@
     border-bottom-left-radius: 20px;
     border: none;
     font-size: 17px;
+    cursor: pointer;
 }
 
 .btnStandard.disabled {
     cursor: not-allowed;
     color: white;
     background-color: #E4E6E8;
+    border: 2px solid #E4E6E8;
 }
+
+

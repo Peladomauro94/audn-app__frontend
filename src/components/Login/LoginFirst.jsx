@@ -6,33 +6,27 @@ import './index.css'
 function LoginFirst({ onView, setOnView}) {
 
     
-    const [email, setEmail] = useState("");
-    const [name, setName] = useState("");
+    const [user, setUser] = useState("");
     const [password, setPassword] = useState("");
-    const [emailError, setEmailError] = useState("");
-    const [nameError, setNameError] = useState("");
+    const [userError, setUserError] = useState("");
     const [passwordError, setPasswordError] = useState("");
-    const [validateEmail, setValidateEmail] = useState("");
-    const [validateName, setValidateName] = useState("");
+    const [validateUser, setValidateUser] = useState("");
     const [validatePassword, setValidatePassword] = useState("");
     const [buttonActive, setButtonActive] = useState("disabled");
-    const [passwordOnView, setPasswordOnView] = useState("")
-    const [isChecked, setIsCheched] = useState(false)
+    const [passwordOnView, setPasswordOnView] = useState("hidden")
+  
   
   
     const handleUserValue = (e) => {
-      const emailValue = e.target.value;
-      setEmail(emailValue);
-      if (!emailValue) {
-        setEmailError("Please enter an email address");
-        setValidateEmail("failed")
+      const userValue = e.target.value;
+      setUser(userValue);
+      if (!userValue) {
+        setUserError("Please enter your user name");
+        setValidateUser("failed")
       } else {
-        setEmailError("");
-      }
-      if(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)){
-        setButtonActive("")
-      }
-  
+        setUserError("");
+        setValidateUser("")
+      } 
   
     };
   
@@ -48,59 +42,45 @@ function LoginFirst({ onView, setOnView}) {
       }
     };
   
-    const handleCheckChange = () =>{
-      setIsCheched(!isChecked)
-    }
+    
   
-    const registerButtonHanndle = (e) => {
-      e.preventDefault();
-      validateForm();
-    };
-  
-    const validateForm = (mail, pass, nam) => {
-      if (/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)) {
-        setEmailError("");
-        setOnView("");
-      } else {
-        setEmailError("Please enter a valid email address");
-        return false;
-      }
-  
-      if (onView === "") {
-        if (name.length > 20) {
-          setNameError("Please enter a shorter name");
-          return false;
+    const validateForm = () => {
+        
+
+        if (user.length > 20) {
+          setUserError("Please enter a shorter user name");
+          return false;  
         } else {
-          setNameError("");
+          setUserError("");
         }
-        if (password.length < 8 || password.length > 25) {
+  
           if (password.length < 8 || password.length > 25) {
             setPasswordError("Please enter a valid password");
             return false;
-          }
-        }
-      }
+          }   else {
+            setPasswordError("");
+          }  
+      
       return;
     };
 
+    const registerButtonHanndle = (e) => {
+        e.preventDefault();
+        if (validateForm()) {
+            setButtonActive("");
+        };
+        setButtonActive("hidden")
+      };
+
   return (
     <div className="login-first__main"><div className="register__top">
-    { (!onView) 
-    ? <button className="register_arrow-back-button" onClick={()=>{setOnView("submit1")}}>
+    <Link to="/">
       <img
         className="register__arrow-back"
         src="/arrow-left.svg"
         alt=""
       />
-    </button>
-    
-    :<Link to="/">
-      <img
-        className="register__arrow-back"
-        src="/arrow-left.svg"
-        alt=""
-      />
-    </Link>}
+    </Link>
     
     <span className="register__title">Inicio de Sesión</span>
   </div>
@@ -112,31 +92,32 @@ function LoginFirst({ onView, setOnView}) {
         <div className="register__input-div">
           <label
             className="register__input-label"
-            htmlFor="register-name__input-user"
+            htmlFor="register-user__input-user"
           >
             Nombre de usuario o E-mail:
           </label>
           <input
-            className={`register__input ${validateName}`}
-            value={name}
+            className={`register__input ${validateUser}`}
+            value={user}
             onChange={handleUserValue}
             type="text"
             placeholder="Juan Perez"
+            required
           />
-          <span className={`register__input-span ${validateName}`}>{nameError}</span>
+          <span className={`register__input-span ${validateUser}`}>{userError}</span>
         </div>
 
         <div className="register__input-div register__second-input">
           <label
             className="register__input-label"
-            htmlFor="register-name__input-password-label"
+            htmlFor="register-user__input-password-label"
           >
             Contraseña:
           </label>
           <div className="register__password-div">
             <input
               className={`register__input imput-password ${validatePassword}`}
-              type={passwordOnView === "hidden" ? "text" : "password"}
+              type={passwordOnView === "hidden" ? "password" : "text"}
               value={password}
               onChange={handlePasswordValue}
               placeholder="Password"
@@ -154,9 +135,9 @@ function LoginFirst({ onView, setOnView}) {
         </div>
       </div>
     </div>
-    <Buttons text={"Continuar"} onClick={registerButtonHanndle} />
+    <Buttons text={"Continuar"} onClick={registerButtonHanndle} style={buttonActive}/>
   </form>
-  <span className="login__password-forgotten" onClick={()=>{setOnView("")}}>¿Olvidaste tu contraseña?</span></div>
+  <span className="login__password-forgotten" onClick={()=>{setOnView("") }}>¿Olvidaste tu contraseña?</span></div>
   )
 }
 
