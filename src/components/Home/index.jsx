@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './index.css'
 import { Navbar } from '../Navbar'
 import { Link } from 'react-router-dom';
+import { Card } from './Card';
 
 export const Home = () => {
 
@@ -73,6 +74,14 @@ export const Home = () => {
                     <span className='topVeinteText'>Top 20s</span>
                     <hr className='hrStyle'/>
                 </div>
+            </div>
+            <div className='contCards'>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
             </div>
             <Navbar home={home} searcher={searcher} user={user} handleHome={handleHome} handleUser={handleUser} handleSearcher={handleSearcher} />
         </div> 
