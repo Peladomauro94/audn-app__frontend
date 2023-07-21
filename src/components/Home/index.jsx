@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './index.css'
 import { Navbar } from '../Navbar'
 import { Link } from 'react-router-dom';
@@ -9,6 +9,16 @@ export const Home = () => {
     const [home, setHome] = useState ('On');
     const [searcher, setSearcher] = useState ('Off');
     const [user, setUser] = useState ('Off');
+    const [topSongs, setTopSongs] = useState ([]);
+
+    useEffect(()=>{
+        fetch("http://localhost:3000/songs/top")
+        .then(res=>res.json())
+        .then(dataTop=>{
+            setTopSongs(dataTop)
+        })
+    },[])
+
 
     const handleHome = () =>{
         setHome('On');
@@ -76,12 +86,9 @@ export const Home = () => {
                 </div>
             </div>
             <div className='contCards'>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
+                {topSongs && topSongs.map((element)=>{
+                    return<Card element={element}/>
+                })}
             </div>
             <Navbar home={home} searcher={searcher} user={user} handleHome={handleHome} handleUser={handleUser} handleSearcher={handleSearcher} />
         </div> 

@@ -1,0 +1,27 @@
+.contCupido{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to top, rgba(236, 238, 239, 0.976) 90%, #ff8d0a28 100%);
+    height: 100vh;
+}
+
+.contTitle{
+    margin-top: 35px;
+    width: 90%;
+    font-weight: 600;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.flechaTitle{
+    width: 6%;
+}
+
+.textCupido{
+    text-align: center;
+    width: 50%;
+    margin: 0% 0% 0% 15%;
+}
