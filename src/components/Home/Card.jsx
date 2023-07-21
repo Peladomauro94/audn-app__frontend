@@ -1,12 +1,12 @@
 import React from 'react'
 import './index.css'
 
-export const Card = () => {
+export const Card = ({element}) => {
   return (
     <div className='card'>
         <img className='imgCard' src="/mileycyrus.png" alt="" />
-        <p className='titleSingle'>Flowers</p>
-        <p className='artistSingle'>Miley Cyrus</p>
+        <p className='titleSingle'>{element.sogn_name}</p>
+        <p className='artistSingle'>{element.artist_name}</p>
     </div>
   )
 }

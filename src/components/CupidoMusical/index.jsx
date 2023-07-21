@@ -3,6 +3,11 @@ import './index.css'
 
 export const Cupido = () => {
   return (
-    <div>Soy cupido musical</div>
+    <div className='contCupido'>
+        <div className='contTitle'>
+          <img className='flechaTitle' src="/vector.svg" alt="" />
+          <p className='textCupido'>Cupido Musical</p>
+        </div>
+    </div>
   )
 }
