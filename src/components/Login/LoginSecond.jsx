@@ -3,9 +3,9 @@ import { Buttons } from "../Buttons";
 
 function LoginSecond({ setOnView, onView }) {
 
-  const [user, setUser] = useState();
-  const [userError, setUserError] = useState();
-  const [validateUser, setValidateUser] = useState();
+  const [user, setUser] = useState("");
+  const [userError, setUserError] = useState("");
+  const [validateUser, setValidateUser] = useState("");
   const [buttonActive, setButtonActive] = useState("disabled");
 
   const handleUserValue = (e) => {

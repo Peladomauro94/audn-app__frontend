@@ -12,7 +12,7 @@ export const Login = () => {
   return (
     <div className="register__main-div">
       <div className={`register__container `}>
-        <LoginFirst/>
+        <LoginFirst onView={onView} setOnView={setOnView}/>
         <LoginSecond onView={onView} setOnView={setOnView}/>  
       </div>
     </div>

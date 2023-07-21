@@ -41,66 +41,62 @@ export const Register = () => {
   const handleNameValue = (e) => {
     const nameValue = e.target.value;
     setName(nameValue);
-    if (!nameValue) {
-      setNameError("Please enter a user name");
-      setValidateName("failed")
-    } else {
-      setNameError("");
-      setValidateName("")
-    }
+    validate(isChecked, nameValue, password);
+
   };
 
   const handlePasswordValue = (e) => {
     const passwordValue = e.target.value;
     setPassword(passwordValue);
-    if (!passwordValue) {
-      setPasswordError("Password must have at almost 8 characters.");
-      setValidatePassword("failed")
-    } else {
-      setPasswordError("");
-      setValidatePassword("");
-    }
+    validate(isChecked, name, passwordValue);
+ 
   };
 
   const handleCheckChange = () =>{
     setIsCheched(!isChecked)
+    validate(!isChecked, name, password);
   }
 
   const registerButtonHanndle = (e) => {
     e.preventDefault();
-    validateForm();
-    setButtonActive("disabled")
+    if (onView === "submit1"){
+      setOnView("")
+    }else{
+      console.log("mandar fetch del register")
+    }
+   
+    
   };
 
-  const validateForm = (mail, pass, nam) => {
-    if (/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)) {
-      setEmailError("");
-      setOnView("");
+  const validate = (isChecked, nameValue, passwordValue) =>{
+
+
+    if (!nameValue) {
+      setNameError("Please enter a user name");
+      setValidateName("failed")
+      setButtonActive("disabled")
     } else {
-      setEmailError("Please enter a valid email address");
-      return false;
+      setNameError("");
+      setValidateName("")
+      
     }
 
-    if (onView === "") {
-      if (name.length > 20) {
-        setNameError("Please enter a shorter name");
-        return false;
-      } else {
-        setNameError("");
-      }
-      
-        if (password.length < 8 || password.length > 25) {
-          setPasswordError("Please enter a valid password");
-          return false;
-        } 
-        
-        if(isChecked === false){
-          return false
-        }
-      
+    if (!passwordValue || passwordValue.length < 8 || passwordValue.length > 25) {
+      setPasswordError("Password must have at almost 8 characters.");
+      setValidatePassword("failed")
+      setButtonActive("disabled")
+    } else {
+      setPasswordError("");
+      setValidatePassword("");
+      setButtonActive("")
     }
-    return;
-  };
+
+    if(!isChecked){
+      setButtonActive("disabled")
+    }
+
+  }
+
 
   return (
     <div className="register__main-div">

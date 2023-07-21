@@ -3,7 +3,7 @@ import { Buttons } from "../Buttons";
 import React, { useState } from "react";
 import './index.css'
 
-function LoginFirst({ onView, setOnView}) {
+function LoginFirst({ onView, setOnView }) {
 
     
     const [user, setUser] = useState("");
@@ -20,56 +20,52 @@ function LoginFirst({ onView, setOnView}) {
     const handleUserValue = (e) => {
       const userValue = e.target.value;
       setUser(userValue);
-      if (!userValue) {
-        setUserError("Please enter your user name");
-        setValidateUser("failed")
-      } else {
-        setUserError("");
-        setValidateUser("")
-      } 
+      validateForm(userValue, password)
   
     };
   
     const handlePasswordValue = (e) => {
       const passwordValue = e.target.value;
       setPassword(passwordValue);
-      if (!passwordValue) {
-        setPasswordError("Password must have at almost 8 characters.");
-        setValidatePassword("failed")
-      } else {
-        setPasswordError("");
-        setValidatePassword("");
-      }
+      validateForm(user, passwordValue)
+      
     };
-  
+    
     
   
-    const validateForm = () => {
+    const validateForm = (userValue, passwordValue) => {
         
+          
+        if (!userValue) {
+            setUserError("Please enter your user name");
+            setValidateUser("failed")
+          } else {
+            setUserError("");
+            setValidateUser("")
+          } 
 
-        if (user.length > 20) {
-          setUserError("Please enter a shorter user name");
-          return false;  
-        } else {
-          setUserError("");
-        }
-  
-          if (password.length < 8 || password.length > 25) {
-            setPasswordError("Please enter a valid password");
-            return false;
-          }   else {
+        if (!passwordValue) {
+            setPasswordError("Password must have at almost 8 characters.");
+            setValidatePassword("failed")
+          } else {
             setPasswordError("");
-          }  
+            setValidatePassword("");
+          }
+
+          if(passwordValue !== "" && !userValue !== "") {
+            setButtonActive("")
+            } else {
+            setButtonActive("disabled")
+            }
       
       return;
     };
 
     const registerButtonHanndle = (e) => {
-        e.preventDefault();
-        if (validateForm()) {
-            setButtonActive("");
-        };
-        setButtonActive("hidden")
+        e.preventDefault(); 
+        if (buttonActive === ""){
+            console.log("hacer el fetch")
+        }
       };
 
   return (
@@ -94,7 +90,7 @@ function LoginFirst({ onView, setOnView}) {
             className="register__input-label"
             htmlFor="register-user__input-user"
           >
-            Nombre de usuario o E-mail:
+            Nombre de Usuario o E-mail:
           </label>
           <input
             className={`register__input ${validateUser}`}
@@ -137,7 +133,7 @@ function LoginFirst({ onView, setOnView}) {
     </div>
     <Buttons text={"Continuar"} onClick={registerButtonHanndle} style={buttonActive}/>
   </form>
-  <span className="login__password-forgotten" onClick={()=>{setOnView("") }}>¿Olvidaste tu contraseña?</span></div>
+  <span className="login__password-forgotten" onClick={()=>{onView === "" ? setOnView("submit1") : setOnView("") }}>¿Olvidaste tu contraseña?</span></div>
   )
 }
 

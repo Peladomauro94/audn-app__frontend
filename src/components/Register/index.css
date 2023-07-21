@@ -85,7 +85,7 @@
     
 }
 
-.register__input:hover{
+.register__input:focus-visible{
     border: 2px solid #FF8E0A;
 }
 

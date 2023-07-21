@@ -18,7 +18,7 @@
     position: absolute;
     z-index:2;
     background: linear-gradient(to top, rgba(255, 255, 255, 0.976) 90%, #ff8d0a40 100%);
-    animation: onView 1s alternate
+    animation: onView 0.7s alternate
 }
 
 @keyframes onView {
