@@ -3,6 +3,27 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+
+
+.login-second__main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index:2;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.976) 90%, #ff8d0a40 100%);
+    animation: onView 1s alternate
+}
+
+@keyframes onView {
+    0% {opacity: 0}
+    100% {opacity:1}
 }
 
 .login__password-forgotten{
@@ -14,3 +35,6 @@
     
 }
 
+.d-none{
+    display: none;
+}
