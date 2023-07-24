@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./index.css";
-import { Link } from "react-router-dom";
+import { Link, redirect, useNavigate } from "react-router-dom";
 import { Buttons } from "../Buttons";
 
 export const Register = () => {
@@ -17,6 +17,23 @@ export const Register = () => {
   const [passwordOnView, setPasswordOnView] = useState("hidden");
   const [isChecked, setIsCheched] = useState(false);
   const [buttonActive, setButtonActive] = useState("disabled");
+
+  const navigate = useNavigate();
+
+  const handleRegister = () =>{
+
+    fetch("http://localhost:3000/register", {method: "POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify({username:name, email, password}) })
+    .then(response => response.json())
+    .then(data => {
+      if(!data.error){
+        console.log("registado")
+        navigate("/home")
+      } else{
+        setNameError("User name is already in use")
+      }
+    })
+    .catch(error => console.log(error))
+  }
 
 
   const handleEmailValue = (e) => {
@@ -62,9 +79,8 @@ export const Register = () => {
     if (onView === "submit1"){
       setOnView("")
     }else{
-      console.log("mandar fetch del register")
+      handleRegister()
     }
-   
     
   };
 

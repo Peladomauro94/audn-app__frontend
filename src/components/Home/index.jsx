@@ -38,7 +38,7 @@ export const Home = () => {
         setUser('On')
     }
 
-
+    console.log(topSongs)
 
   return (
     <div className='contGeneral'>
