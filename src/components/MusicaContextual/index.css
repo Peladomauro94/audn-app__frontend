@@ -48,32 +48,59 @@
     background-color: #fdfeff;
 }
 
+.contextual__nav-div button{
+    background-color: transparent;
+    border: none;
+}
+
 .contextual__nav-text{
     color: #BFC0C1;
     font-weight: 400;
     font-size: 18px;
 }
 
+.contextual__main-content > .hidden{
+    padding-top: 0px;
+    overflow: hidden;
+    height: 0px;
+    transition: height padding-top 0.5s ease;
+}
+
 .contextual__main-content ul {
     position: absolute;
-    top:160px;
+    display: flex;
+    flex-direction: column;
+    top:150px;
     width: 320px;
     border: 2px solid #26262E;
     padding: 0;
     margin: 0px;
-    padding-top: 10px;
+    padding-top: 20px;
     z-index: 1;
+    overflow: hidden;
+    transition: height padding-top 0.5s ease;
+    animation: onView 2s alternate;
 }
+
+@keyframes onView {
+    0% {height: 0}
+    100% {height:auto}
+}
+
+
 
 .contextual__main-content ul li{
+    width: 90%;
     list-style: none;
     height: 48px;
-    padding: 0px;
+    padding: 0px 16px 0px 16px;
     border-bottom: 2px solid #26262E;
+    align-self: center;
+    display: flex;
 }
 
 
-.contextual__main-content ul li .last-list-item{
+.contextual__main-content > .last-list-item{
     list-style: none;
     height: 48px;
     padding: 0px;

@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 export const Contextual = () => {
 
   const [actividad, setActividad] = useState("Actividad");
+  const [dropdown1, setDropdown1] = useState("hidden")
+
+  
 
   return (
     <div className="contextual__main-div">
@@ -21,14 +24,18 @@ export const Contextual = () => {
         <span className="contextual__title">¿Cuál es la ocasión?</span>
         <div className="contextual__nav-div">
           <span className="contextual__nav-text">{actividad}</span>
-          <img src="/arrow-down.svg" alt="" />
+          <img src="/arrow-down.svg" alt="" onClick={()=>{!dropdown1 ? setDropdown1("hidden") : setDropdown1("")}}/>
         </div>
-        <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li className="last-list-item"></li>
+        <ul className={dropdown1}>
+            <li><span>Ejercicio Físico</span></li>
+            <li><span>Limpieza</span></li>
+            <li><span>Celebración</span></li>
+            <li><span>Dormir</span></li>
+            <li><span>Meditar</span></li>
+            <li><span>Social</span></li>
+            <li><span>Estudiar</span></li>
+            <li><span>Relajacion</span></li>
+            <li className="last-list-item"><span>Viajando</span></li>
           </ul>
 
       </div>
