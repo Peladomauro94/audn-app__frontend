@@ -3,7 +3,7 @@ import "./index.css";
 import { Link, redirect, useNavigate } from "react-router-dom";
 import { Buttons } from "../Buttons";
 
-export const Register = () => {
+export const Register = ({setUser}) => {
   const [onView, setOnView] = useState("submit1");
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -26,6 +26,8 @@ export const Register = () => {
     .then(response => response.json())
     .then(data => {
       if(!data.error){
+        setUser(data.token)
+        localStorage.setItem('auth-token',data.token)
         console.log("registado")
         navigate("/home")
       } else{

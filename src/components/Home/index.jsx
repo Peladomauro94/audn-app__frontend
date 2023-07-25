@@ -11,14 +11,17 @@ export const Home = () => {
     const [user, setUser] = useState ('Off');
     const [topSongs, setTopSongs] = useState ([]);
 
-    useEffect(()=>{
-        fetch("http://localhost:3000/songs/top")
+    useEffect(() => {
+        fetch("http://localhost:3000/songs/top",{
+            headers:{
+                'auth-token':localStorage.getItem('auth-token')
+            }
+        })
         .then(res=>res.json())
         .then(dataTop=>{
             setTopSongs(dataTop)
         })
     },[])
-
 
     const handleHome = () =>{
         setHome('On');
@@ -37,8 +40,6 @@ export const Home = () => {
         setSearcher('Off');
         setUser('On')
     }
-
-    console.log(topSongs)
 
   return (
     <div className='contGeneral'>
@@ -87,7 +88,7 @@ export const Home = () => {
             </div>
             <div className='contCards'>
                 {topSongs && topSongs.map((element)=>{
-                    return<Card element={element}/>
+                    return<Card key={element.id} element={element}/>
                 })}
             </div>
             <Navbar home={home} searcher={searcher} user={user} handleHome={handleHome} handleUser={handleUser} handleSearcher={handleSearcher} />

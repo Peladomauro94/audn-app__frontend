@@ -2,8 +2,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { Buttons } from "../Buttons";
 import React, { useState } from "react";
 import "./index.css";
+import { useAuth } from "../../contexts/authContext";
 
-function LoginFirst({ onView, setOnView }) {
+function LoginFirst({ onView, setOnView, loginUser }) {
+
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [userError, setUserError] = useState("");
@@ -24,12 +26,13 @@ function LoginFirst({ onView, setOnView }) {
     .then(res => res.json())
     .then(data => {
         if(data.token){
+            loginUser(data.token)
+            localStorage.setItem('auth-token', data.token)
             navigate("/home")
         }else{
             setUserError("El usuario y/o la contraseña son incorrectos.")
         }
-    })
-    ;
+    });
   };
 
   const handleUserValue = (e) => {
