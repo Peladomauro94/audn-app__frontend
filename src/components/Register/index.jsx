@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./index.css";
 import { Link, redirect, useNavigate } from "react-router-dom";
 import { Buttons } from "../Buttons";
+import { useAuth } from "../../contexts/authContext";
 
 export const Register = () => {
   const [onView, setOnView] = useState("submit1");
@@ -20,12 +21,16 @@ export const Register = () => {
 
   const navigate = useNavigate();
 
+  const {setUser} = useAuth()
+
   const handleRegister = () =>{
 
     fetch("http://localhost:3000/register", {method: "POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify({username:name, email, password}) })
     .then(response => response.json())
     .then(data => {
       if(!data.error){
+        setUser(data.token)
+        localStorage.setItem('auth-token',data.token)
         console.log("registado")
         navigate("/home")
       } else{

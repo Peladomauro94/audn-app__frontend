@@ -2,8 +2,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { Buttons } from "../Buttons";
 import React, { useState } from "react";
 import "./index.css";
+import { useAuth } from "../../contexts/authContext";
 
 function LoginFirst({ onView, setOnView }) {
+
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [userError, setUserError] = useState("");
@@ -15,21 +17,16 @@ function LoginFirst({ onView, setOnView }) {
 
   const navigate = useNavigate()
 
-  const handleLogin = () => {
-    fetch("http://localhost:3000/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username: user, password }),
-    })
-    .then(res => res.json())
-    .then(data => {
-        if(data.token){
-            navigate("/home")
-        }else{
-            setUserError("El usuario y/o la contraseña son incorrectos.")
-        }
-    })
-    ;
+  const {login} = useAuth()
+
+  const handleLogin = async () => {
+    const logedIn = await login(user,password)
+
+    if(logedIn){
+      navigate("/home")
+    }else{
+      setUserError("El usuario y/o la contraseña son incorrectos.")
+    }
   };
 
   const handleUserValue = (e) => {

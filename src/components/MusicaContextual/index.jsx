@@ -10,6 +10,8 @@ export const Contextual = () => {
 
   
 
+  console.log('contextual..')
+
   return (
     <div className="contextual__main-div">
       <div className="contextual__top">

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 import "./App.css";
 import App from "./App.jsx";
 import { Register } from "./components/Register";
@@ -8,37 +8,45 @@ import { Login } from "./components/Login";
 import { Home } from "./components/Home";
 import { Cupido } from "./components/CupidoMusical";
 import { Contextual } from "./components/MusicaContextual";
+import { AuthProvider, useAuth } from "./contexts/authContext";
 
+const Routes = () => {
+  // const [user, setUser] = useState(localStorage.getItem('auth-token'))
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App/>,
-  },
-  {
-    path:"/register",
-    element: <Register />
-  },
-  {
-    path:"/login",
-    element: <Login />
-  },
-  {
-    path:"/home",
-    element: <Home/>
-  },
-  {
-    path:"/cupidomusical",
-    element: <Cupido/>
-  },
-  {
-    path:"/contextual",
-    element: <Contextual/>
-  }
-]);
+  const {user} = useAuth()
+  
+  return (
+    <RouterProvider router={createBrowserRouter([
+      {
+        path: "/",
+        element: user ? <Navigate to="/home"/> : <App/>,
+      },
+      {
+        path:"/register",
+        element: user ? <Navigate to="/home"/> : <Register />
+      },
+      {
+        path:"/login",
+        element: user ? <Navigate to="/home"/> : <Login/>
+      },
+      {
+        path:"/home",
+        element: user ? <Home/> : <Navigate to="/login"/>
+      },
+      {
+        path:"/cupidomusical",
+        element: user ? <Cupido/> : <Navigate to="/login"/>
+      },
+      {
+        path:"/contextual",
+        element: user ? <Contextual/> : <Navigate to="/login"/>
+      },
+    ])} />
+  )
+}
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  <AuthProvider>
+    <Routes/>
+  </AuthProvider>
 );
