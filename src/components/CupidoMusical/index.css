@@ -25,3 +25,13 @@
     width: 50%;
     margin: 0% 0% 0% 15%;
 }
+
+.contSongs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imgCupido{
+    margin-top: 25%;
+}
