@@ -11,25 +11,25 @@ const useAuth = () => {
 }
 
 const AuthProvider = ({children}) => {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(localStorage.getItem('auth-token'))
 
-  useEffect(()=>{
-    setUser(localStorage.getItem('auth-token'))
-  },[])
+  const login = async(username,password) => {
+    const loginData = await checkCredentials(username,password)
 
-  const login = (username,password) => {
-    return checkCredentials(username,password).then(data=>{
-      if(data.token){
-        setUser(data)
-      }
-    })
+    if (loginData.token){
+      setUser(loginData.token)
+      localStorage.setItem('auth-token', loginData.token)
+      return true
+    }
+
+    return false;
   }
 
   const logout = () => {
     setUser(null)
   }
 
-  return <AuthContext.Provider value={{ user, setUser, logout }}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={{ user, login, setUser, logout }}>{children}</AuthContext.Provider>;
 }
 
 export {AuthContext, AuthProvider, useAuth}

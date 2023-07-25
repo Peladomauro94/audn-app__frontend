@@ -11,9 +11,10 @@ import { Contextual } from "./components/MusicaContextual";
 import { AuthProvider, useAuth } from "./contexts/authContext";
 
 const Routes = () => {
-  const [user, setUser] = useState(localStorage.getItem('auth-token'))
+  // const [user, setUser] = useState(localStorage.getItem('auth-token'))
 
-  // const {user} = useAuth()
+  const {user} = useAuth()
+  
   return (
     <RouterProvider router={createBrowserRouter([
       {
@@ -22,11 +23,11 @@ const Routes = () => {
       },
       {
         path:"/register",
-        element: user ? <Navigate to="/home"/> : <Register setUser={setUser} />
+        element: user ? <Navigate to="/home"/> : <Register />
       },
       {
         path:"/login",
-        element: user ? <Navigate to="/home"/> : <Login setUser={setUser} />
+        element: user ? <Navigate to="/home"/> : <Login/>
       },
       {
         path:"/home",

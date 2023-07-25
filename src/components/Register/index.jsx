@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import "./index.css";
 import { Link, redirect, useNavigate } from "react-router-dom";
 import { Buttons } from "../Buttons";
+import { useAuth } from "../../contexts/authContext";
 
-export const Register = ({setUser}) => {
+export const Register = () => {
   const [onView, setOnView] = useState("submit1");
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -19,6 +20,8 @@ export const Register = ({setUser}) => {
   const [buttonActive, setButtonActive] = useState("disabled");
 
   const navigate = useNavigate();
+
+  const {setUser} = useAuth()
 
   const handleRegister = () =>{
 
