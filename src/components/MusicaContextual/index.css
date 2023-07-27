@@ -1,14 +1,16 @@
 .contextual__main-div{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     height: 100vh;
+    padding-bottom: 2rem;
     background: linear-gradient(to top, rgba(255, 255, 255, 0.976) 90%, #ff8d0a40 100%); 
 }
 
 .contextual__top{
-    margin-top: 24px;
+    margin-top: 30px;
     padding-right: 24px;
     width: 320px;
     height: 40px;
@@ -28,7 +30,7 @@
 .contextual__title{
     font-weight: 500;
     font-size: 24px;
-    margin-top: 16px;
+    margin-top: 24px;
     margin-bottom: 16px;
 }
 
@@ -37,15 +39,26 @@
     border: 2px solid black;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    max-width: 288px;
+    width: 320px;
+    max-width: 340px;
     height: 48px;
     padding-left:16px;
     padding-right: 16px;
     border-top-right-radius: 16px;
     border-bottom-left-radius: 16px;
-    z-index: 2;
     background-color: #fdfeff;
+}
+
+.contextual__nav-div > .contextual__dropdown1{
+    z-index: 99;
+}
+
+.contextual__nav-div > .contextual__dropdown2{
+    z-index: 5;
+}
+
+.contextual__nav-div > .contextual__dropdown3{
+    z-index: 2;
 }
 
 .contextual__nav-div button{
@@ -59,14 +72,7 @@
     font-size: 18px;
 }
 
-.contextual__main-content > .hidden{
-    padding-top: 0px;
-    overflow: hidden;
-    height: 0px;
-    transition: height padding-top 0.5s ease;
-}
-
-.contextual__main-content ul {
+.contextual__main-content ul{
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -78,32 +84,101 @@
     padding-top: 20px;
     z-index: 1;
     overflow: hidden;
-    transition: height padding-top 0.5s ease;
-    animation: onView 2s alternate;
+    background-color: white;
+    z-index: -1;
+    
 }
 
-@keyframes onView {
-    0% {height: 0}
-    100% {height:auto}
+.contextual__main-content  .hidden{
+    padding-top: 0px;
+    overflow: hidden;
+    height: 0;
+    animation: closing 0.5s ease
 }
 
+.contextual__main-content .onview{
+    
+    animation: onView1 0.5s ease
+}
+
+.contextual__main-content > .contextual__second-drop {
+    top:270px;
+}
+
+.contextual__main-content > .contextual__second-drop > .hidden{
+    padding-top: 0px;
+    overflow: hidden;
+    height: 0;
+    animation: closing2 0.5s ease
+}
+
+.contextual__main-content > .contextual__second-drop > .onview{
+    height: 320px;
+    animation: onView2 0.5s ease
+}
+
+.contextual__main-content > .contextual__third-drop {
+    top:390px;
+}
+
+
+
+@keyframes onView1{
+    from { height: 0}
+    to {height: 450px}
+}
+
+@keyframes closing1{
+    from { height: 450px}
+    to {height: 0}
+}
+
+@keyframes onView2{
+    from { height: 0}
+    to {height: 320px}
+}
+
+@keyframes closing2{
+    from { height: 320px}
+    to {height: 0}
+}
 
 
 .contextual__main-content ul li{
-    width: 90%;
+    width: 100%;
     list-style: none;
     height: 48px;
     padding: 0px 16px 0px 16px;
     border-bottom: 2px solid #26262E;
-    align-self: center;
+    align-items: center;
     display: flex;
 }
 
 
-.contextual__main-content > .last-list-item{
-    list-style: none;
-    height: 48px;
-    padding: 0px;
+.contextual__main-content .last-list-item{
     border-bottom: 0px solid transparent
+}
+
+.contextual__gender-div{
+    margin-top: 1.5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 0;
+}
+
+.contextual__gender{
+    border: 2px solid black;
+    padding: 6px 8px 6px 8px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.contextual__title2{
+    font-weight: 500;
+    font-size: 24px;
+    margin-top: 0px;
+    margin-bottom: 16px;
 }
 
