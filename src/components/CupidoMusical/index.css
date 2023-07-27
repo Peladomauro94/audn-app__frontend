@@ -32,6 +32,129 @@
     align-items: center;
 }
 
+.contCentral{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .imgCupido{
-    margin-top: 25%;
+    margin-top: 15%;
+    width: 95%;
+    border-top-right-radius: 48px;
+    border-bottom-left-radius: 48px;
+}
+
+.botonesCont{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 4vh;
+    width: 100%;
+    position: relative;
+    bottom: 4vh;
+}
+
+.contFondoBoton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 8vh;
+    height: 8vh;
+    border-radius: 50px;
+    background-color: white;
+
+}
+
+.nameArtist{
+    margin: 0px;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.playlistSpace{
+    width: 100%;
+    height: 30vh;
+}
+
+.playlist{
+    width: 100%;
+    height: 30vh;
+}
+
+.contButton{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.crearPlaylist{
+    letter-spacing: 0.5px;
+    width: 90%;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+    height: 3rem;
+    color: white;
+    background-color: #d3d5d6;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border: none;
+    font-size: 17px;
+}
+
+.crearPlaylist:disabled{
+    background-color: #FF8E0A ;
+}
+
+.contImgPlay{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0px 40px 0px;
+
+}
+
+.imgPlaylist{
+    width: 90px;
+    height: 90px;
+    border-radius: 90px;
+    margin: 0px -15px 0px -15px;
+}
+
+.contReloj{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 8vh;
+    height: 8vh;
+    border-radius: 50px;
+    background-color: white;
+}
+
+.matchesCont{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 20px 0px 20px 0px;
+}
+
+.matchesText{
+    width: 50%;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.contAlineador{
+    display: flex;
+    justify-content: center;
+    width: 25%;
+}
+
+.historySt{
+    width: 4vh;
 }
