@@ -1,10 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { CardPlaylist } from '../CardPlaylist'
 import { Buttons } from '../../Buttons'
+import { useAuth } from '../../../contexts/authContext';
 
-export const Profile = ({ user, handleConfiguration, playlist }) => {
+export const Profile = ({ user, handleConfiguration }) => {
+
+    const [playlist, setPlaylist] = useState ([]);
+
+    const {user:token} = useAuth();
+
+    useEffect(()=>{
+        fetch('http://localhost:3000/playlists/', {
+            headers:{'auth-token':token}
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+            setPlaylist(data)
+        })
+    },[])
+
   return (<div className={`contUser${user}`}>
-  <div>
+  <div className='contGral'>
       <div className='contUser__top'>
           <div>
               <img src="/nut.svg" alt="nut" onClick={handleConfiguration}/>

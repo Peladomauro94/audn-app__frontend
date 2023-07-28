@@ -59,7 +59,7 @@ export const Homepage = () => {
     <div className={`contGeneral ${all}`}>
         <Home home={home}  />
         <Searcher searcher={searcher} topSongs={topSongs} />
-        <Profile user={user} handleConfiguration={handleConfiguration} playlist={playlist} />
+        <Profile user={user} handleConfiguration={handleConfiguration} />
         <Navbar home={home} searcher={searcher} user={user} handleHome={handleHome} handleUser={handleUser} handleSearcher={handleSearcher} />
     </div>
   )
