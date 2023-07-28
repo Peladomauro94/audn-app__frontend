@@ -3,6 +3,8 @@ import './index.css'
 import { Link } from 'react-router-dom'
 
 export const Navbar = ({ handleHome, handleSearcher, handleUser, home, searcher, user }) => {
+    
+
   return (
     <div className='contNavbar'>
         <Link onClick={handleHome} className='seccionesNav'>
