@@ -5,8 +5,11 @@ import { Link } from 'react-router-dom';
 import { Card } from './Card';
 import { Buttons } from '../Buttons';
 import { CardPlaylist } from './CardPlaylist';
+import { Home } from './Sections/Home';
+import { Searcher } from './Sections/Searcher';
+import { Profile } from './Sections/Profile';
 
-export const Home = () => {
+export const Homepage = () => {
 
     const [all, setAll] = useState ('OnView')
     const [home, setHome] = useState ('On');
@@ -54,82 +57,10 @@ export const Home = () => {
 
   return (
     <div className={`contGeneral ${all}`}>
-        <div className={`contHome${home}`}>
-            <div>
-                <div className='titulosHome'>
-                    <span>Música ya</span>
-                    <div className='iconosTit'>
-                    <img src="/history.svg" alt="" />
-                    <img src="/bell.svg" alt="" />
-                    </div>
-                </div>
-                <div className='contBoxes'>
-                    <Link to='/cupidomusical' className='cupidoMusical'>
-                        <img className='fotoBox' src="/cupido.svg" alt="" />
-                        <div className='textBox'>
-                        <p className='tituloBox'>Cupido Musical</p>
-                        <p>Tus artistas favoritos nunca van a dejarte con el corazon roto.</p>            
-                        </div>
-                    </Link>
-                    <Link to='/contextual' className='cupidoMusical'>
-                        <img className='fotoBox' src="/contextual.svg" alt="" />
-                        <div className='textBox'>
-                        <p className='tituloBox'>Música Contextual</p>
-                        <p>Creamos la playlist perfecta para cualquier situación.</p>            
-                        </div>
-                    </Link>
-                </div>
-            </div>
-            <Navbar home={home} searcher={searcher} user={user} handleHome={handleHome} handleUser={handleUser} handleSearcher={handleSearcher} />
-        </div>
-
-        <div className={`contSearcher${searcher}`}>
-            <div className='mainSearcher'>
-                <div className='titulosSearcher'>
-                    <span>Buscador</span>
-                </div>
-                <form className='formSearcher' action="">
-                    <img className='searchingImg' src="/searching.svg" alt="" />
-                    <input className='searcherInput' type="text" placeholder='¿Qué deseas escuchar?'/>
-                </form>
-                <div className='contTop'>
-                    <span className='topVeinteText'>Top 20s</span>
-                    <hr className='hrStyle'/>
-                </div>
-            </div>
-            <div className='contCards'>
-                {topSongs && topSongs.map((element)=>{
-                    return<Card key={element.id} element={element}/>
-                })}
-            </div>
-            <Navbar home={home} searcher={searcher} user={user} handleHome={handleHome} handleUser={handleUser} handleSearcher={handleSearcher} />
-        </div> 
-
-        <div className={`contUser${user}`}>
-            <div>
-                <div className='contUser__top'>
-                    <div>
-                        <img src="/nut.svg" alt="nut" onClick={handleConfiguration}/>
-                    </div>
-                    <img src="/mileycyrus.png" alt="" />
-                    <h1>Arcangel Mami</h1>
-                    <span>@arcangel_mami</span>
-                </div>
-                <div className='contPlaylist__title'>
-                    <span >Mis Playlists</span>
-                    <hr className='hrStyle'/>
-                    <Buttons style={"contPlaylist-button"} text={"Crear Playlist"}/>
-                </div>
-                <div className='contPlaylist__bottom'>
-             
-                {playlist && playlist.map((element)=>{
-                    return<CardPlaylist key={element.id} element={element}/>
-                })}
-                </div>
-            </div>
-
-            <Navbar home={home} searcher={searcher} user={user} handleHome={handleHome} handleUser={handleUser} handleSearcher={handleSearcher} />
-        </div> 
+        <Home home={home}  />
+        <Searcher searcher={searcher} topSongs={topSongs} />
+        <Profile user={user} handleConfiguration={handleConfiguration} playlist={playlist} />
+        <Navbar home={home} searcher={searcher} user={user} handleHome={handleHome} handleUser={handleUser} handleSearcher={handleSearcher} />
     </div>
   )
 }

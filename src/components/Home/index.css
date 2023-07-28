@@ -85,7 +85,7 @@
     flex-direction: column;
     align-items: center;
     background: linear-gradient(to top, rgba(236, 238, 239, 0.976) 90%, #ff8d0a28 100%);
-    height: 100vh;
+    height: 85vh;
     justify-content: space-between;
 }
 
@@ -199,6 +199,7 @@
 /* VENTANA PERFIL */
 
 .contUserOn{
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
