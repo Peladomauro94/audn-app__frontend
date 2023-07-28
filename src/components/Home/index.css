@@ -218,6 +218,11 @@
 
 /* VENTANA User Info*/
 
+.contUser > div{
+    display: flex;
+    flex-direction: column;
+}
+
 .contUser__top{
     display: flex;
     flex-direction: column;

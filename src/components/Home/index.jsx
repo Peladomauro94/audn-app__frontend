@@ -8,11 +8,12 @@ import { CardPlaylist } from './CardPlaylist';
 
 export const Home = () => {
 
+    const [all, setAll] = useState ('OnView')
     const [home, setHome] = useState ('On');
     const [searcher, setSearcher] = useState ('Off');
     const [user, setUser] = useState ('Off');
     const [topSongs, setTopSongs] = useState ([]);
-    const [playlist, setPlaylist] = useState ([])
+    const [playlist, setPlaylist] = useState ([]);
 
 
     useEffect(() => {
@@ -52,7 +53,7 @@ export const Home = () => {
     }
 
   return (
-    <div className='contGeneral'>
+    <div className={`contGeneral ${all}`}>
         <div className={`contHome${home}`}>
             <div>
                 <div className='titulosHome'>
@@ -97,7 +98,7 @@ export const Home = () => {
                 </div>
             </div>
             <div className='contCards'>
-                {playlist && playlist.map((element)=>{
+                {topSongs && topSongs.map((element)=>{
                     return<Card key={element.id} element={element}/>
                 })}
             </div>
@@ -120,10 +121,10 @@ export const Home = () => {
                     <Buttons style={"contPlaylist-button"} text={"Crear Playlist"}/>
                 </div>
                 <div className='contPlaylist__bottom'>
-                {topSongs && topSongs.map((element)=>{
-                    return <CardPlaylist key={element.id} element={element}/> 
+             
+                {playlist && playlist.map((element)=>{
+                    return<CardPlaylist key={element.id} element={element}/>
                 })}
-                    
                 </div>
             </div>
 
