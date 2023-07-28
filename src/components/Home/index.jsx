@@ -8,6 +8,7 @@ import { CardPlaylist } from './CardPlaylist';
 import { Home } from './Sections/Home';
 import { Searcher } from './Sections/Searcher';
 import { Profile } from './Sections/Profile';
+import Config from './Sections/Config';
 
 export const Homepage = () => {
 
@@ -15,8 +16,8 @@ export const Homepage = () => {
     const [home, setHome] = useState ('On');
     const [searcher, setSearcher] = useState ('Off');
     const [user, setUser] = useState ('Off');
+    const [config, setConfig] = useState("contHomeOff")
     const [topSongs, setTopSongs] = useState ([]);
-    const [playlist, setPlaylist] = useState ([]);
 
 
     useEffect(() => {
@@ -50,17 +51,26 @@ export const Homepage = () => {
     }
 
     const handleConfiguration = () =>{
-        setHome('Off');
-        setSearcher('Off');
-        setUser('Off')
+        setAll('contHomeOff');
+        setConfig('')
+
+    }
+
+    const handleButtonBack = () =>{
+        setAll('');
+        setConfig('contHomeOff')
     }
 
   return (
-    <div className={`contGeneral ${all}`}>
-        <Home home={home}  />
-        <Searcher searcher={searcher} topSongs={topSongs} />
-        <Profile user={user} handleConfiguration={handleConfiguration} />
-        <Navbar home={home} searcher={searcher} user={user} handleHome={handleHome} handleUser={handleUser} handleSearcher={handleSearcher} />
+    <div className='total-cont'>
+        <div className={`contGeneral ${all}`}>
+            <Home home={home}  />
+            <Searcher searcher={searcher} topSongs={topSongs} />
+            <Profile user={user} handleConfiguration={handleConfiguration} />
+            <Navbar home={home} searcher={searcher} user={user} handleHome={handleHome} handleUser={handleUser} handleSearcher={handleSearcher} />
+        </div>
+        <Config style={config} handleButtonBack={handleButtonBack}/>
     </div>
+
   )
 }

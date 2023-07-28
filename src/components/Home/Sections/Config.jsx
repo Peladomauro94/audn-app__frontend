@@ -1,16 +1,15 @@
 import React from 'react'
-import { Buttons } from '../Buttons'
-import { Link } from 'react-router-dom'
+import { Buttons } from '../../Buttons'
 
 
-function Config() {
+function Config({ style, handleButtonBack }) {
   return (
-    <div className="register__main-div">
+    <div className={`register__main-div ${style}`}>
       <div className="config__top">
         <div className="register__top">
-            <Link to="/">
+            <button className="config__buttom-back" onClick={handleButtonBack}>
                 <img className="register__arrow-back" src="/arrow-left.svg" alt="" />
-            </Link>
+            </button>
             
             <span className="register__title">Configuración</span>
             
