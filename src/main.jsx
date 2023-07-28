@@ -10,6 +10,7 @@ import { Cupido } from "./components/CupidoMusical";
 import { Contextual } from "./components/MusicaContextual";
 import { AuthProvider, useAuth } from "./contexts/authContext";
 
+
 const Routes = () => {
   // const [user, setUser] = useState(localStorage.getItem('auth-token'))
 
@@ -41,6 +42,7 @@ const Routes = () => {
         path:"/contextual",
         element: user ? <Contextual/> : <Navigate to="/login"/>
       },
+    
     ])} />
   )
 }

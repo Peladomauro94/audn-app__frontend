@@ -216,5 +216,118 @@
     justify-content: space-between;
 }
 
+/* VENTANA User Info*/
+
+.contUser__top{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-top: 50px;
+}
+
+.contUser__top > div{
+    background-color: #fdfeff48;
+    border-radius: 100%;
+    height: 48px;
+    width: 48px;
+    position: absolute;
+    right: 0;
+    top: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contUser__top > div > img{
+    position: relative;
+    height: 24px;
+    width: 24px;
+
+}
+
+.contUser__top > img {
+    border-radius: 100%;
+    width: 152px;
+    box-shadow: 0 0px 20px #0808115b;
+}
+
+.contUser__top > h1 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.contPlaylist__title{
+    display: flex;
+    width: 320px;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.contPlaylist__title > span{
+    font-weight: 600;
+    font-size: 15px;
+    align-self: center;
+}
+
+.contPlaylist__title > hr{
+    height: 2px;
+    color: #E4E6E8;
+    width: 87px;
+    border: 2px;
+    margin-right: 0;
+}
+
+.contPlaylist-button{
+    width: 100px;
+    height: 26px;
+    font-size: 12px;
+    align-self: center;
+}
+
+.contPlaylist__bottom{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contPlaylist__playlist{
+    width: 152px;
+    height: 204px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.contPlaylist__image-div{
+    width: 100%;
+    height: auto;
+    border-top-right-radius: 30%;
+    border-bottom-left-radius: 30%;
+    overflow: hidden;
+}
+
+.contPlaylist__image-div > img{
+    object-fit: cover;
+}
+
+.contPlaylist__playlist > div > h4 {
+    font-size: 12px;
+    font-weight: 500;
+    color: #26262E;
+    margin: 0;
+    
+
+}
+
+.contPlaylist__playlist > div > span {
+    font-size: 12px;
+    font-weight: 400;
+    color: #838486;
+
+}
+
 
 

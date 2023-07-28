@@ -3,6 +3,7 @@ import './index.css'
 import { Navbar } from '../Navbar'
 import { Link } from 'react-router-dom';
 import { Card } from './Card';
+import { Buttons } from '../Buttons';
 
 export const Home = () => {
 
@@ -39,6 +40,12 @@ export const Home = () => {
         setHome('Off');
         setSearcher('Off');
         setUser('On')
+    }
+
+    const handleConfiguration = () =>{
+        setHome('Off');
+        setSearcher('Off');
+        setUser('Off')
     }
 
   return (
@@ -95,7 +102,33 @@ export const Home = () => {
         </div> 
 
         <div className={`contUser${user}`}>
-            <div>Informacion de usuario</div>
+            <div>
+                <div className='contUser__top'>
+                    <div>
+                        <img src="/nut.svg" alt="nut" onClick={handleConfiguration}/>
+                    </div>
+                    <img src="/mileycyrus.png" alt="" />
+                    <h1>Arcangel Mami</h1>
+                    <span>@arcangel_mami</span>
+                </div>
+                <div className='contPlaylist__title'>
+                    <span >Mis Playlists</span>
+                    <hr className='hrStyle'/>
+                    <Buttons style={"contPlaylist-button"} text={"Crear Playlist"}/>
+                </div>
+                <div className='contPlaylist__bottom'>
+                    <div className='contPlaylist__playlist'>
+                        <div className='contPlaylist__image-div'>
+                            <img src="/mileycyrus.png" alt="" />
+                        </div>
+                        <div>
+                            <h4>Me fui de gira Mabel</h4>
+                            <span>mara_pg</span>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+
             <Navbar home={home} searcher={searcher} user={user} handleHome={handleHome} handleUser={handleUser} handleSearcher={handleSearcher} />
         </div> 
     </div>
