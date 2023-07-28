@@ -9,6 +9,7 @@ import { Home } from "./components/Home";
 import { Cupido } from "./components/CupidoMusical";
 import { Contextual } from "./components/MusicaContextual";
 import { AuthProvider, useAuth } from "./contexts/authContext";
+import { Playlist } from "./components/Playlist";
 
 
 const Routes = () => {
@@ -42,7 +43,10 @@ const Routes = () => {
         path:"/contextual",
         element: user ? <Contextual/> : <Navigate to="/login"/>
       },
-    
+      {
+        path:"/playlist/:id",
+        element: user ? <Playlist/> : <Navigate to="/cupidomusical"/>
+      },
     ])} />
   )
 }
