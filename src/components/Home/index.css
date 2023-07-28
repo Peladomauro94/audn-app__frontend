@@ -203,6 +203,7 @@
     flex-direction: column;
     align-items: center;
     background: linear-gradient(to top, rgba(236, 238, 239, 0.976) 90%, #ff8d0a28 100%);
+    width: 100vw;
     height: 100vh;
     justify-content: space-between;
 }
@@ -334,5 +335,49 @@
 
 }
 
+/* Configuracion de usuario*/
 
+.config__top{
+    display: flex;
+    flex-direction: column;
+}
 
+.config__buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.config__button-first{
+    margin-top: 2rem;
+}
+
+.config__button-second{
+    background-color: #26262E;
+}
+
+.config__bottom{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3rem;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.config__bottom > hr{
+    width: 320px;
+    height: 2px;
+    color: #E4E6E8;
+    border: 1px solid #bebfc0;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.config__logout{
+    cursor: pointer;
+}
+
+.config__logout:hover{
+    color: #838486;
+}
