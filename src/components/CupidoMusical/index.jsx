@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './index.css'
 import { Link } from 'react-router-dom'
+import { useAuth } from "../../contexts/authContext";
 
 export const Cupido = () => {
-const artistas = [
+/* const artistas = [
     {
       'id':1,
       'nombre':'la vela puerca',
@@ -19,13 +20,38 @@ const artistas = [
       'nombre':'karibe con k',
       'imagen':'https://cdn.elobservador.com.uy/112021/1636045876038.jpg'
     }
-  ]
-  const [artist, setArtist] = useState(artistas);
-  const [actual, setActual] = useState(artist[0]);
+  ] */
+  const [artist, setArtist] = useState([]);
+  const [actual, setActual] = useState();
   const [currentSong, setCurrentSong] = useState(0);
   const [playlist, setPlaylist] = useState([]);
-  const [disabledState, setDisabledState] = useState(false);
 
+  const {user} = useAuth();
+
+  useEffect(()=>{
+    fetch('http://localhost:3000/artists/cupido',{headers:{'auth-token':user}})
+    .then(res=>res.json())
+    .then(data=>{
+      setArtist(data)
+      setActual(data[0])
+    })  
+  },[])
+
+  const handleCreatePlay = () =>{
+    const artistIdList = playlist.map(item=>{
+      return item.id
+    })
+    console.log(artistIdList)
+    fetch('http://localhost:3000/playlists/cupido', {
+      method:'POST', 
+      headers:{'auth-token':user, 'Content-Type':'application/json'},
+      body:JSON.stringify({artistList : artistIdList})
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      console.log(data)
+    })
+  }
   
   const handleLike = () =>{
     const artistPlay = actual
@@ -72,16 +98,17 @@ const artistas = [
           <Link to='/home' className='flechaTitle'><img src="/vector.svg" alt="" /></Link>
           <p className='textCupido'>Cupido Musical</p>
         </div>
+        {actual &&
         <div className='contSongs'>
           <div className='contCentral'>
-            <img className='imgCupido' src={actual.imagen} alt="" />
+            <img className='imgCupido' src={actual.img_url} alt="" />
             <div className='botonesCont'>
               <div onClick={handleLike} className='contFondoBoton'><img src="/like-green.svg" alt="" /></div>
               <div onClick={handleNolike} className='contFondoBoton'><img src="/cancel.svg" alt="" /></div>
             </div>
           </div>
-          <p className='nameArtist'>{actual.nombre}</p>
-        </div>
+          <p className='nameArtist'>{actual.name}</p>
+        </div> }
         {(playlist.length===0)
         ?<div className='playlistSpace'></div>
         :<div className='playlist'>
@@ -93,13 +120,13 @@ const artistas = [
             </div>
             <div className='contImgPlay' >
               {playlist && playlist.map((element)=>{
-                      return<img key={element.id} className='imgPlaylist' src={element.imagen} alt="" />
+                      return<img key={element.id} className='imgPlaylist' src={element.img_url} alt="" />
                   })}
             </div>
           </div>
         }  
         <div className='contButton'>
-          <button className='crearPlaylist' disabled={(playlist.length<3) ? false : true} >Crear Playlist</button>
+          <button onClick={handleCreatePlay} className='crearPlaylist' disabled={(playlist.length<3)} >Crear Playlist</button>
         </div>
     </div>
   )

@@ -96,7 +96,7 @@
     font-weight: 500;
     height: 3rem;
     color: white;
-    background-color: #d3d5d6;
+    background-color: #FF8E0A ;
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
     border: none;
@@ -104,7 +104,7 @@
 }
 
 .crearPlaylist:disabled{
-    background-color: #FF8E0A ;
+    background-color: #d3d5d6;
 }
 
 .contImgPlay{
