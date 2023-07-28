@@ -4,6 +4,7 @@ import { Navbar } from '../Navbar'
 import { Link } from 'react-router-dom';
 import { Card } from './Card';
 import { Buttons } from '../Buttons';
+import { CardPlaylist } from './CardPlaylist';
 
 export const Home = () => {
 
@@ -11,6 +12,8 @@ export const Home = () => {
     const [searcher, setSearcher] = useState ('Off');
     const [user, setUser] = useState ('Off');
     const [topSongs, setTopSongs] = useState ([]);
+    const [playlist, setPlaylist] = useState ([])
+
 
     useEffect(() => {
         fetch("http://localhost:3000/songs/top",{
@@ -94,7 +97,7 @@ export const Home = () => {
                 </div>
             </div>
             <div className='contCards'>
-                {topSongs && topSongs.map((element)=>{
+                {playlist && playlist.map((element)=>{
                     return<Card key={element.id} element={element}/>
                 })}
             </div>
@@ -117,15 +120,10 @@ export const Home = () => {
                     <Buttons style={"contPlaylist-button"} text={"Crear Playlist"}/>
                 </div>
                 <div className='contPlaylist__bottom'>
-                    <div className='contPlaylist__playlist'>
-                        <div className='contPlaylist__image-div'>
-                            <img src="/mileycyrus.png" alt="" />
-                        </div>
-                        <div>
-                            <h4>Me fui de gira Mabel</h4>
-                            <span>mara_pg</span>
-                        </div>  
-                    </div>
+                {topSongs && topSongs.map((element)=>{
+                    return <CardPlaylist key={element.id} element={element}/> 
+                })}
+                    
                 </div>
             </div>
 
