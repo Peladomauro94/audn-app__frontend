@@ -1,15 +1,15 @@
 import React from "react";
 import "./index.css";
 
-export const CardPlaylist = ({ owner, title, img_url }) => {
+export const CardPlaylist = ({ element }) => {
   return (
     <div className="contPlaylist__playlist">
       <div className="contPlaylist__image-div">
-        <img src={img_url} alt="" />
+        <img className="imageSt" src='/mileycyrus.png' alt="" />
       </div>
       <div>
-        <h4>{title}</h4>
-        <span>{owner}</span>
+        <h4>{element.name}</h4>
+        <span>Usuario</span>
       </div>
     </div>
   );

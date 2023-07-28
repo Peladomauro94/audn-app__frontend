@@ -2,7 +2,7 @@ import React from 'react'
 import { Navbar } from '../Navbar'
 import './index.css'
 import { Link } from 'react-router-dom'
-import { Song } from './Song'
+import { Song } from './Song'      
 
 export const Playlist = () => {
   return (<div className='contGeneral'>

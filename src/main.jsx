@@ -5,7 +5,7 @@ import "./App.css";
 import App from "./App.jsx";
 import { Register } from "./components/Register";
 import { Login } from "./components/Login";
-import { Home } from "./components/Home";
+import { Homepage } from "./components/Home";
 import { Cupido } from "./components/CupidoMusical";
 import { Contextual } from "./components/MusicaContextual";
 import { AuthProvider, useAuth } from "./contexts/authContext";
@@ -34,7 +34,7 @@ const Routes = () => {
       },
       {
         path:"/home",
-        element: user ? <Home/> : <Navigate to="/login"/>
+        element: user ? <Homepage/> : <Navigate to="/login"/>
       },
       {
         path:"/cupidomusical",
