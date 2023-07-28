@@ -3,6 +3,8 @@ import './index.css'
 import { Navbar } from '../Navbar'
 import { Link } from 'react-router-dom';
 import { Card } from './Card';
+import { Buttons } from '../Buttons';
+import { CardPlaylist } from './CardPlaylist';
 
 export const Home = () => {
 
@@ -10,6 +12,8 @@ export const Home = () => {
     const [searcher, setSearcher] = useState ('Off');
     const [user, setUser] = useState ('Off');
     const [topSongs, setTopSongs] = useState ([]);
+    const [playlist, setPlaylist] = useState ([])
+
 
     useEffect(() => {
         fetch("http://localhost:3000/songs/top",{
@@ -39,6 +43,12 @@ export const Home = () => {
         setHome('Off');
         setSearcher('Off');
         setUser('On')
+    }
+
+    const handleConfiguration = () =>{
+        setHome('Off');
+        setSearcher('Off');
+        setUser('Off')
     }
 
   return (
@@ -87,7 +97,7 @@ export const Home = () => {
                 </div>
             </div>
             <div className='contCards'>
-                {topSongs && topSongs.map((element)=>{
+                {playlist && playlist.map((element)=>{
                     return<Card key={element.id} element={element}/>
                 })}
             </div>
@@ -95,7 +105,28 @@ export const Home = () => {
         </div> 
 
         <div className={`contUser${user}`}>
-            <div>Informacion de usuario</div>
+            <div>
+                <div className='contUser__top'>
+                    <div>
+                        <img src="/nut.svg" alt="nut" onClick={handleConfiguration}/>
+                    </div>
+                    <img src="/mileycyrus.png" alt="" />
+                    <h1>Arcangel Mami</h1>
+                    <span>@arcangel_mami</span>
+                </div>
+                <div className='contPlaylist__title'>
+                    <span >Mis Playlists</span>
+                    <hr className='hrStyle'/>
+                    <Buttons style={"contPlaylist-button"} text={"Crear Playlist"}/>
+                </div>
+                <div className='contPlaylist__bottom'>
+                {topSongs && topSongs.map((element)=>{
+                    return <CardPlaylist key={element.id} element={element}/> 
+                })}
+                    
+                </div>
+            </div>
+
             <Navbar home={home} searcher={searcher} user={user} handleHome={handleHome} handleUser={handleUser} handleSearcher={handleSearcher} />
         </div> 
     </div>

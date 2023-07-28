@@ -11,6 +11,7 @@ import { Contextual } from "./components/MusicaContextual";
 import { AuthProvider, useAuth } from "./contexts/authContext";
 import { Playlist } from "./components/Playlist";
 
+
 const Routes = () => {
   // const [user, setUser] = useState(localStorage.getItem('auth-token'))
 
