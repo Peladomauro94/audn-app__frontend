@@ -75,15 +75,16 @@ function LoginFirst({ onView, setOnView }) {
   };
 
   return (
-    <div className="login-first__main">
+    <div className={`login-first__main ${onView === "submit1" ? "" : "d-none"}`}>
       <div className="register__top">
         <Link to="/">
           <img className="register__arrow-back" src="/arrow-left.svg" alt="" />
         </Link>
 
         <span className="register__title">Inicio de Sesión</span>
+        <div></div>
       </div>
-      <form action="" type="submit" className="register__form">
+      <form action="" type="submit" className="register__form login__form">
         <div className="register-content">
           <div className={`register__form `}>
             <div className="register__input-div">
@@ -115,7 +116,7 @@ function LoginFirst({ onView, setOnView }) {
               </label>
               <div className="register__password-div">
                 <input
-                  className={`register__input imput-password ${validatePassword}`}
+                  className={`register__input input-password ${validatePassword}`}
                   type={passwordOnView === "hidden" ? "password" : "text"}
                   value={password}
                   onChange={handlePasswordValue}
@@ -125,8 +126,8 @@ function LoginFirst({ onView, setOnView }) {
                   className="register__input-eye"
                   src={
                     passwordOnView === "hidden"
-                      ? "/state=open.svg"
-                      : "/state=close.svg"
+                      ? "/state=close.svg"
+                      : "/state=open.svg"
                   }
                   alt=""
                   onClick={() => {

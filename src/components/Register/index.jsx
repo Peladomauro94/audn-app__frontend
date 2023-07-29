@@ -141,8 +141,9 @@ export const Register = () => {
           </Link>}
           
           <span className="register__title">Crear Cuenta</span>
+          <div></div>
         </div>
-        <form action="" className="register__form" onSubmit="submit">
+        <form action="" className="register__form" onSubmit={(e)=>{e.preventDefault()}}>
           <div className="register-content">
             <span className="register__question">
               { onView === "submit1" ? "¿Cuál es tu correo electrónico?" : "Ingresa un nombre de usuario y contraseña."}
@@ -201,7 +202,7 @@ export const Register = () => {
                 </label>
                 <div className="register__password-div">
                   <input
-                    className={`register__input imput-password ${validatePassword}`}
+                    className={`register__input input-password ${validatePassword}`}
                     type={passwordOnView === "hidden" ? "password" : "text"}
                     value={password}
                     onChange={handlePasswordValue}

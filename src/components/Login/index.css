@@ -4,8 +4,10 @@
     justify-content: space-between;
     height: 100%;
     position: relative;
-    z-index: 1;
+    
 }
+
+
 
 
 
@@ -14,17 +16,19 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    width: 100%;
-    position: absolute;
-    z-index:2;
-    background: linear-gradient(to top, rgba(255, 255, 255, 0.976) 90%, #ff8d0a40 100%);
-    animation: onView 0.7s alternate
+    width: 100vw;
+    max-width: 414px;
+    position: relative;
+    align-self: center;
+    
 }
 
-@keyframes onView {
-    0% {opacity: 0}
-    100% {opacity:1}
+.login-second__label{
+   
+    max-width: 414px;
 }
+
+
 
 .login__password-forgotten{
     font-weight: 500;

@@ -9,6 +9,10 @@
     background: linear-gradient(to top, rgba(255, 255, 255, 0.976) 90%, #ff8d0a40 100%); 
 }
 
+.contextual__main-div > div{
+    max-width: 350px;
+}
+
 .contextual__top{
     margin-top: 30px;
     padding-right: 24px;
@@ -31,7 +35,7 @@
     font-weight: 500;
     font-size: 24px;
     margin-top: 24px;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 }
 
 .contextual__nav-div{
@@ -47,19 +51,10 @@
     border-top-right-radius: 16px;
     border-bottom-left-radius: 16px;
     background-color: #fdfeff;
+    margin-top: 12px;
 }
 
-.contextual__nav-div > .contextual__dropdown1{
-    z-index: 99;
-}
 
-.contextual__nav-div > .contextual__dropdown2{
-    z-index: 5;
-}
-
-.contextual__nav-div > .contextual__dropdown3{
-    z-index: 2;
-}
 
 .contextual__nav-div button{
     background-color: transparent;
@@ -72,22 +67,50 @@
     font-size: 18px;
 }
 
-.contextual__main-content ul{
+.contextual__nav-text.selected{
+    color: #26262E;
+    font-weight: 500;
+}
+
+.contextual__dropdown1{
+    text-align: center;
+    margin-top: 12px;
+    position: relative;
+    z-index: 10;
+}
+
+.contextual__dropdown2{
+    text-align: center;
+    margin-top: 12px;
+    position: relative;
+    z-index: 8;
+}
+
+.contextual__dropdown3{
+    text-align: center;
+    margin-top: 12px;
+    position: relative;
+    z-index: 6;
+}
+
+.contextual__main-content > div > ul{
     position: absolute;
     display: flex;
     flex-direction: column;
-    top:150px;
     width: 320px;
     border: 2px solid #26262E;
+    top:72px;
     padding: 0;
     margin: 0px;
     padding-top: 20px;
-    z-index: 1;
     overflow: hidden;
     background-color: white;
     z-index: -1;
     
+    
 }
+
+
 
 .contextual__main-content  .hidden{
     padding-top: 0px;
@@ -138,18 +161,28 @@
 
 .contextual__main-content ul li{
     width: 100%;
+    font-weight: 500;
     list-style: none;
     height: 48px;
     padding: 0px 16px 0px 16px;
     border-bottom: 2px solid #26262E;
     align-items: center;
     display: flex;
+    cursor: pointer;
+}
+
+.contextual__main-content ul li:hover{
+    background-color: #FF8E0A;
+    color: #ffffff;
+    cursor: pointer;
 }
 
 
 .contextual__main-content .last-list-item{
     border-bottom: 0px solid transparent
 }
+
+/* Seleccion de géneros*/
 
 .contextual__gender-div{
     margin-top: 1.5rem;

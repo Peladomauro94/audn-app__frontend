@@ -45,6 +45,7 @@ function LoginSecond({ setOnView, onView }) {
         </button>
 
         <span className="register__title">Recuperar Cuenta</span>
+        <div></div>
       </div>
       <form action="" type="submit" className="register__form">
     <div className="register-content">
@@ -53,7 +54,7 @@ function LoginSecond({ setOnView, onView }) {
       >
         <div className="register__input-div">
           <label
-            className="register__input-label"
+            className="register__input-label login-second__label"
             htmlFor="register-user__input-user"
           >
             Nombre de Usuario o E-mail:

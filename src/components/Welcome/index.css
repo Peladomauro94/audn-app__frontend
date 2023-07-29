@@ -2,12 +2,17 @@
 
 /* Estilo general */
 .contWelcome{
+    display: flex;
     height: 100%;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.976) 90%, #ff8d0a40 100%); 
 }
 
 .backgroundGif{
     height: 100vh;
     width: 100%;
+    max-width: 414px;
     position: absolute;
     opacity: 0.5;
     height: 100vh;
@@ -58,6 +63,7 @@
     flex-direction: column;
     align-items: center;
     gap: 15px;
+    max-width: 414px;
 }
 .contIniciarS{
     margin-top: 50px;
