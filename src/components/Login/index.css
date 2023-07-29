@@ -7,7 +7,9 @@
     
 }
 
-
+.login-first__content{
+    width: 85vw;
+}
 
 
 
@@ -21,6 +23,11 @@
     position: relative;
     align-self: center;
     
+}
+
+.login-first__label{
+    
+    max-width: 414px;
 }
 
 .login-second__label{

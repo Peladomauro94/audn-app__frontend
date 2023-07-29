@@ -175,7 +175,9 @@ export const Contextual = () => {
           </div>
         </div>
       </div>
-      <Buttons text={"Crear Playlist"} />
+      <div className="contextual__button-div">
+        <Buttons text={"Crear Playlist"} style={"contextual__button-create"}/>
+      </div>
     </div>
   );
 };

@@ -6,6 +6,7 @@
     width: 100%;
     height: 100vh;
     padding-bottom: 2rem;
+    overflow: hidden;
     background: linear-gradient(to top, rgba(255, 255, 255, 0.976) 90%, #ff8d0a40 100%); 
 }
 
@@ -29,6 +30,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    
 }
 
 .contextual__title{
@@ -77,13 +79,17 @@
     margin-top: 12px;
     position: relative;
     z-index: 10;
+    animation: insideLeft 0.5s alternate;
 }
+
+
 
 .contextual__dropdown2{
     text-align: center;
     margin-top: 12px;
     position: relative;
     z-index: 8;
+    animation: insideRight 0.5s alternate;
 }
 
 .contextual__dropdown3{
@@ -91,6 +97,7 @@
     margin-top: 12px;
     position: relative;
     z-index: 6;
+    animation: insideLeft 0.5s alternate;
 }
 
 .contextual__main-content > div > ul{
@@ -103,12 +110,14 @@
     padding: 0;
     margin: 0px;
     padding-top: 20px;
-    overflow: hidden;
+    
     background-color: white;
     z-index: -1;
     
     
 }
+
+
 
 
 
@@ -191,6 +200,8 @@
     flex-direction: column;
     align-items: center;
     margin-right: 0;
+    position: relative;
+    
 }
 
 .contextual__gender{
@@ -198,6 +209,9 @@
     padding: 6px 8px 6px 8px;
     border-bottom-left-radius: 10px;
     border-top-right-radius: 10px;
+    position: relative;
+    animation: insideRight 0.5s alternate;
+
 }
 
 .contextual__title2{
@@ -205,5 +219,28 @@
     font-size: 24px;
     margin-top: 0px;
     margin-bottom: 16px;
+    position: relative;
+    animation: insideRight 0.5s alternate;
 }
 
+.contextual__button-div{
+    position: relative;
+    
+    width: 100%;
+}
+
+.contextual__button-create{
+    width: 100%;
+    position: relative;
+    animation: insideLeft 0.5s alternate
+}
+
+@keyframes insideLeft{
+    from {left: -30rem;}
+    to {left: 0;}
+}
+
+@keyframes insideRight{
+    from {right: -30rem;}
+    to {right: 0;}
+}
