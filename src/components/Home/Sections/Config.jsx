@@ -1,8 +1,15 @@
 import React from 'react'
 import { Buttons } from '../../Buttons'
+import { useAuth } from '../../../contexts/authContext'
+import { useNavigate } from 'react-router-dom';
 
 
 function Config({ style, handleButtonBack }) {
+
+  const {logout} = useAuth();
+  const navigate = useNavigate();
+
+
   return (
     <div className={`register__main-div ${style}`}>
       <div className="config__top">
@@ -23,7 +30,7 @@ function Config({ style, handleButtonBack }) {
       <div className='config__bottom'>
         <span>Versión: V1.25.03</span>
         <hr />
-        <span className='config__logout'>Cerrar Sesión</span>
+        <span onClick={()=>{logout();navigate('/')}} className='config__logout'>Cerrar Sesión</span>
       </div>
 
     </div>

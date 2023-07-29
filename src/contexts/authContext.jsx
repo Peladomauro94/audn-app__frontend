@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
 import {checkCredentials} from '../services/audn-api'
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext()
 
@@ -12,6 +13,8 @@ const useAuth = () => {
 
 const AuthProvider = ({children}) => {
   const [user, setUser] = useState(localStorage.getItem('auth-token'))
+  const [username, setUsername] = useState(localStorage.getItem('auth-username'))
+
 
   const login = async(username,password) => {
     const loginData = await checkCredentials(username,password)
@@ -19,6 +22,8 @@ const AuthProvider = ({children}) => {
     if (loginData.token){
       setUser(loginData.token)
       localStorage.setItem('auth-token', loginData.token)
+      setUsername(loginData.username)
+      localStorage.setItem('auth-username', loginData.username)
       return true
     }
 
@@ -27,9 +32,12 @@ const AuthProvider = ({children}) => {
 
   const logout = () => {
     setUser(null)
+    setUsername(null)
+    localStorage.removeItem('auth-token')
+    localStorage.removeItem('auth-username')
   }
 
-  return <AuthContext.Provider value={{ user, login, setUser, logout }}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={{ user, login, setUser, logout, username }}>{children}</AuthContext.Provider>;
 }
 
 export {AuthContext, AuthProvider, useAuth}

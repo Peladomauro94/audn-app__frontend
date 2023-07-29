@@ -1,32 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import './index.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from "../../contexts/authContext";
 
 export const Cupido = () => {
-/* const artistas = [
-    {
-      'id':1,
-      'nombre':'la vela puerca',
-      'imagen':'https://radiopogo.com.ar/wp-content/uploads/0981799001674060571-520x425.jpg'
-    },    
-    {
-      'id':2,
-      'nombre':'ke personajes',
-      'imagen':'https://cloudfront-us-east-1.images.arcpublishing.com/infobae/NMVYXSLW5BHYZHJCTVA4DM5B4Q.jpg'
-    },
-    {
-      'id':3,
-      'nombre':'karibe con k',
-      'imagen':'https://cdn.elobservador.com.uy/112021/1636045876038.jpg'
-    }
-  ] */
+
   const [artist, setArtist] = useState([]);
   const [actual, setActual] = useState();
   const [currentSong, setCurrentSong] = useState(0);
   const [playlist, setPlaylist] = useState([]);
 
   const {user} = useAuth();
+  const navigate = useNavigate();
 
   useEffect(()=>{
     fetch('http://localhost:3000/artists/cupido',{headers:{'auth-token':user}})
@@ -50,6 +35,9 @@ export const Cupido = () => {
     .then(res=>res.json())
     .then(data=>{
       console.log(data)
+      if(data.playlist_id){
+        navigate('/playlist/'+data.playlist_id)
+      }
     })
   }
   

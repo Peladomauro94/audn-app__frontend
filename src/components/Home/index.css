@@ -234,6 +234,7 @@ div > .contHomeOff{
 }
 
 .contUser__top{
+    width: 55%;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -1,17 +1,39 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Navbar } from '../Navbar'
 import './index.css'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { Song } from './Song'      
+import { useAuth } from '../../contexts/authContext'
 
 export const Playlist = () => {
+
+    const [data, setData] = useState();
+
+    const {id} = useParams();
+    const {user:token} = useAuth();
+
+    useEffect(()=>{
+        console.log(id)
+        fetch('http://localhost:3000/playlists/'+id, {
+            headers:{'auth-token':token}
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+            setData(data)
+        })
+    },[])
+
+
+
+
   return (<div className='contGeneral'>
     <div className='superior'> 
         <div className='contEncabezado'>
-            <Link to='/cupidomusical' className='contExit'><img src="/vector.svg" alt="" /></Link>
+            <Link to='/home' className='contExit'><img src="/vector.svg" alt="" /></Link>
             <div className='contEncText'>
                 <p className='generadaText'>Generada del Cupido Musical</p>
-                <p className='playlistText'>Playlist Generada</p>
+                <p className='playlistText'>{data && data.playlist_name}</p>
             </div>
             <div className='contPuntos'><img src="/trespuntos.svg" alt="" /></div>
         </div>
@@ -45,9 +67,9 @@ export const Playlist = () => {
             </div>
         </div>
         <div className='contCanciones'>
-            <Song/>
-            <Song/>
-            <Song/>
+            {data && data.songs.map((element)=>{
+                return<Song key={element.id} element={element}/>
+             })}
         </div>
     </div>
     <Navbar home='On' searcher='Off' user='Off' />

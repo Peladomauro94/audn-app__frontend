@@ -5,7 +5,7 @@ export const CardPlaylist = ({ element }) => {
   return (
     <div className="contPlaylist__playlist">
       <div className="contPlaylist__image-div">
-        <img className="imageSt" src='/mileycyrus.png' alt="" />
+        <img className="imageSt" src={element.avatar_url} alt="" />
       </div>
       <div>
         <h4>{element.name}</h4>

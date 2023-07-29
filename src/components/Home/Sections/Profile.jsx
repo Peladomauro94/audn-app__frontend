@@ -7,7 +7,7 @@ export const Profile = ({ user, handleConfiguration }) => {
 
     const [playlist, setPlaylist] = useState ([]);
 
-    const {user:token} = useAuth();
+    const {user:token,username} = useAuth();
 
     useEffect(()=>{
         fetch('http://localhost:3000/playlists/', {
@@ -27,8 +27,8 @@ export const Profile = ({ user, handleConfiguration }) => {
               <img src="/nut.svg" alt="nut" onClick={handleConfiguration}/>
           </div>
           <img src="/mileycyrus.png" alt="" />
-          <h1>Arcangel Mami</h1>
-          <span>@arcangel_mami</span>
+          <h1>{username}</h1>
+          <span>@{username}</span>
       </div>
       <div className='contPlaylist__title'>
           <span >Mis Playlists</span>
