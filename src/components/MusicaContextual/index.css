@@ -133,15 +133,7 @@
     to {height: 0}
 }
 
-@keyframes onView2{
-    from { height: 0}
-    to {height: 320px}
-}
 
-@keyframes closing2{
-    from { height: 320px}
-    to {height: 0}
-}
 
 
 .contextual__main-content ul li{
