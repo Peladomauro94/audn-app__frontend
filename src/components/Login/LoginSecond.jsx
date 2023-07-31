@@ -34,7 +34,7 @@ function LoginSecond({ setOnView, onView }) {
 
   return (
     <div className={`login-second__main ${onView === "submit1" ? "d-none" : ""}`}>
-      <div className="register__top">
+      <div className="register__top animation__insideRight">
         <button
           className="register_arrow-back-button"
           onClick={() => {
@@ -48,7 +48,7 @@ function LoginSecond({ setOnView, onView }) {
         <div></div>
       </div>
       <form action="" type="submit" className="register__form">
-    <div className="register-content">
+    <div className="register-content animation__insideRight">
       <div
         className={`register__form `}
       >
@@ -72,7 +72,7 @@ function LoginSecond({ setOnView, onView }) {
         
       </div>
     </div>
-    <Buttons text={"Continuar"} onClick={recoverPasswordHandle} />
+    <Buttons text={"Continuar"} onClick={recoverPasswordHandle} style={"animation__insideRight"}/>
   </form>
     </div>
   );

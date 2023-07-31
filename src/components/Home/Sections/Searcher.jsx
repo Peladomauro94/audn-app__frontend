@@ -2,8 +2,9 @@ import React from 'react'
 import { Card } from '../Card'
 
 export const Searcher = ({ searcher, topSongs }) => {
-  return (<div className={`contSearcher${searcher}`}>
-  <div className='mainSearcher'>
+  return (
+  <div className={`contSearcher${searcher} `}>
+  <div className='mainSearcher animation__insideRight'>
       <div className='titulosSearcher'>
           <span>Buscador</span>
       </div>
@@ -16,7 +17,7 @@ export const Searcher = ({ searcher, topSongs }) => {
           <hr className='hrStyle'/>
       </div>
   </div>
-  <div className='contCards'>
+  <div className='contCards animation__insideRight'>
       {topSongs && topSongs.map((element)=>{
           return<Card key={element.id} element={element}/>
       })}

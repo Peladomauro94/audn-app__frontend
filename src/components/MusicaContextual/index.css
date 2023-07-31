@@ -235,12 +235,3 @@
     animation: insideLeft 0.5s alternate
 }
 
-@keyframes insideLeft{
-    from {left: -30rem;}
-    to {left: 0;}
-}
-
-@keyframes insideRight{
-    from {right: -30rem;}
-    to {right: 0;}
-}

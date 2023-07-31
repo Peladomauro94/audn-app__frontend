@@ -87,7 +87,7 @@ function LoginFirst({ onView, setOnView }) {
       <form action="" type="submit" className="register__form login__form">
         <div className="register-content login-first__content">
           <div className={`register__form `}>
-            <div className="register__input-div">
+            <div className="register__input-div animation__insideRight">
               <label
                 className="register__input-label login-first__label"
                 htmlFor="register-user__input-user"
@@ -107,7 +107,7 @@ function LoginFirst({ onView, setOnView }) {
               </span>
             </div>
 
-            <div className="register__input-div register__second-input">
+            <div className="register__input-div animation__insideLeft register__second-input">
               <label
                 className="register__input-label"
                 htmlFor="register-user__input-password-label"

@@ -28,23 +28,30 @@
     justify-content: center;
     align-items: center;
     letter-spacing: -0.794434px;
+    overflow: hidden;
+    width: 100%;
 }
 .logoWelcome{
-    width: 200px;
+    position: relative;
+    width: 208px;
+    animation: insideLeft 0.5s alternate;
 }
 
 .musicaP{
     font-family: 'Rubik', sans-serif;
     font-weight: 400;
-    font-size: 22px;
+    font-size: 26px;
     color: #26262E;
     margin-top: 15px;
+    position: relative;
+    animation: insideLeft 0.5s alternate;
 }
 
 /* Pie de inicio */
 
 .pieInicio{
     width: 100%;
+    overflow: hidden;
     height: 50vh;
     position: relative;
     z-index: 2;
@@ -64,12 +71,17 @@
     align-items: center;
     gap: 15px;
     max-width: 414px;
+    position: relative;
+    animation: insideRight 0.5s alternate;
 }
 .contIniciarS{
     margin-top: 50px;
     display: flex;
     align-items: center;
+    position: relative;
+    animation: insideRight 0.5s alternate;
 }
+
 .iniciarS{
     text-decoration: none;
     font-weight: 500;

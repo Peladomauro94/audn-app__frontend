@@ -14,19 +14,24 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    animation: insideLeft 0.5s alternate;
 }
 
 .register__container{
+    position: relative;
     display: flex;
     flex-direction: column;
     height: 100vh;
     max-width: 414px;
     align-self: center;
+    overflow: hidden;
 }
 
 .register__title{
     font-weight: 500;
     font-size: 19px;
+    text-align: center;
 }
 
 .register_arrow-back-button{
@@ -46,10 +51,16 @@
     width: 85%;
 }
 
+.register-content > div{
+    text-align: center;
+}
+
 .register__question{
     font-weight: 500;
     font-size: 26px;
     text-align: center;
+    position: relative;
+    animation: insideRight 0.5s alternate;
 }
 
 .register__form{
@@ -61,18 +72,36 @@
     width: 100%;
     margin-top: 1.5rem;
     padding-bottom: 2rem;
+    text-align: start;
+
 }
+
+.register__second-animation{
+    position: relative;
+    animation: insideRight 0.5s alternate;
+    justify-content: initial;
+}
+
+
 
 .register__input-div{
     display: flex;
     flex-direction: column;
     width: 100%;
+
+}
+
+.register__first-animation{
+    position: relative;
+    animation: insideLeft 0.5s alternate;
+
 }
 
 
 .register__input-label{
     font-weight: 500;
     font-size: 20px;
+    text-align: start;
 }
 
 .register__input{
@@ -184,5 +213,4 @@
 .d-none{
     display:none
 }
-
 

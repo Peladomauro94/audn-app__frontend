@@ -3,3 +3,13 @@ body{
     box-sizing: border-box;
     font-family: 'Rubik', sans-serif;
 }
+
+@keyframes insideLeft{
+    from {left: -30rem;}
+    to {left: 0;}
+}
+
+@keyframes insideRight{
+    from {right: -30rem;}
+    to {right: 0;}
+}

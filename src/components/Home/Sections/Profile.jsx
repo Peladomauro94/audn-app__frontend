@@ -20,8 +20,9 @@ export const Profile = ({ user, handleConfiguration }) => {
         })
     },[])
 
-  return (<div className={`contUser${user}`}>
-  <div className='contGral'>
+  return (
+  <div className={`contUser${user}`}>
+  <div className='contUser__general animation__insideRight'>
       <div className='contUser__top'>
           <div>
               <img src="/nut.svg" alt="nut" onClick={handleConfiguration}/>

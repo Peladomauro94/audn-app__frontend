@@ -7,7 +7,7 @@ export const Welcome = () => {
     <div className='contWelcome'>
       <img className='backgroundGif' src="/gif-background.gif" alt="" />
       <div className='contLogo'>
-        <div><img className='logoHome' src="/logo-large.png" alt="" /></div>          
+        <div><img className='logoWelcome' src="/logo-large.png" alt="" /></div>          
         <div><p className='musicaP'>Música a medida.</p></div>    
       </div>
       <div className='pieInicio'>
