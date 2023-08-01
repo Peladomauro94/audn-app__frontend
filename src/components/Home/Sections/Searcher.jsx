@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Card } from '../Card'
+import { SearchResult } from '../../SearchResult'
 import { useAuth } from '../../../contexts/authContext';
 
 export const Searcher = ({ searcher, topSongs }) => {
