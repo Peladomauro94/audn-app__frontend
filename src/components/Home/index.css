@@ -493,3 +493,22 @@ div > .contHomeOff{
     width: 90%;
     margin-top: 40px;
 }
+
+.contBusquedaFinal{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contFiltrosBusqueda{
+    display: flex;
+    gap: 8px;
+    width: 90%;
+    overflow: scroll;
+    margin: 20px 0px;
+}
+
+.contFiltrosBusqueda::-webkit-scrollbar {
+    display: none;
+  }
