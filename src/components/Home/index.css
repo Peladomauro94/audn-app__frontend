@@ -464,6 +464,13 @@ div > .contHomeOff{
     margin: 7% 0% 7% 0%;    
     display: flex;
     align-items: center;
+    flex-direction: column;
+}
+
+.contTopBR{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 }
 
 .busReciente{
@@ -478,4 +485,11 @@ div > .contHomeOff{
     width: 40%;
     margin-left: 5%;
     background-color: #BFC0C1;
+}
+
+.recienteLista{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-top: 40px;
 }

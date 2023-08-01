@@ -67,9 +67,20 @@ export const Searcher = ({ searcher, topSongs }) => {
           <input  value={searchState} onChange={handleValue} className='searcherInput' type="text" placeholder='¿Qué deseas escuchar?'/>
     </form>
     <div className='contBusReciente'>
-        <p className='busReciente'>Búsquedas Recientes:</p>
-        <hr className='hrStyleOn'/>
+        <div className='contTopBR'>
+            <p className='busReciente'>Búsquedas Recientes:</p>
+            <hr className='hrStyleOn'/>
+        </div>
+        <div className='recienteLista'>
+            <SearchResult/>
+            <SearchResult/>
+            <SearchResult/>
+            <SearchResult/>
+            <SearchResult/>
+
+        </div>
     </div>
+    
 
   </div>
     }
