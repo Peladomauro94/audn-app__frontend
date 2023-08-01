@@ -6,10 +6,7 @@ export const Searcher = ({ searcher, topSongs }) => {
 
     const [searchState, setSearchState] = useState('');
     const [result, setResult] = useState([]);
-<<<<<<< Updated upstream
     const [onView, setOnView] = useState('top');
-=======
->>>>>>> Stashed changes
 
     const {user} = useAuth();
 
@@ -30,7 +27,6 @@ export const Searcher = ({ searcher, topSongs }) => {
        setSearchState(value)
     }
 
-<<<<<<< Updated upstream
     const inputClickTop = () =>{
         setOnView('search')
     }
@@ -39,8 +35,6 @@ export const Searcher = ({ searcher, topSongs }) => {
         setOnView('top')
     }
 
-=======
->>>>>>> Stashed changes
 
   return (<div className={`contSearcher${searcher}`}>
     {onView === 'top' && 
@@ -51,11 +45,7 @@ export const Searcher = ({ searcher, topSongs }) => {
       </div>
       <form className='formSearcher' onSubmit={updateResult} action="">
           <img className='searchingImg' src="/searching.svg" alt="" />
-<<<<<<< Updated upstream
           <input onClick={inputClickTop} className='searcherInput' type="text" placeholder='¿Qué deseas escuchar?'/>
-=======
-          <input value={searchState} onChange={handleValue} className='searcherInput' type="text" placeholder='¿Qué deseas escuchar?'/>
->>>>>>> Stashed changes
       </form>
       <div className='contTop'>
           <span className='topVeinteText'>Top 20s</span>
