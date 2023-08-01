@@ -433,43 +433,10 @@ div > .contHomeOff{
     color: #838486;
 }
 
-/* Estilo de busqueda */
 
-.resultSearcher{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 60px;
-    width: 100%;
-    height: 100vh;
-    max-width: 414px;
-    position: absolute;
-    top: 0px;
-    background: linear-gradient(to top, rgba(236, 238, 239, 0.976) 90%, #ff8d0a28 100%);
-    z-index: 200;
-}
-
-.formSearcherOn{
-    border: 2px solid #FF8E0A;
-}
-
-.contBusReciente{
-    width: 100%;
-    margin: 7% 0% 7% 0%;    
-    display: flex;
-    align-items: center;
-}
-
-.busReciente{
-    display: flex;
-    align-items: center;
-    font-weight: 600;
-    margin: 0% 0% 0% 5%;
-    font-size: 15px;
-}
-
-.hrStyleOn{
-    width: 40%;
-    margin-left: 5%;
-    background-color: #BFC0C1;
+.list-item__info{
+    display: block;
+    font-weight: 400;
+    font-size: 12px;
+    color: #838486;
 }

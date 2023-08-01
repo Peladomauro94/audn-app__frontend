@@ -171,7 +171,7 @@ export const Contextual = () => {
           <span className="contextual__title2">
             Selecciona hasta 3 géneros:
           </span>
-          <GenderItem Text={Reggae}/>
+          <GenderItem Text={"Reggae"}/>
         </div>
       </div>
       <div className="contextual__button-div">
