@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card } from '../Card'
+import { SearchResult } from '../../SearchResult'
 
 export const Searcher = ({ searcher, topSongs }) => {
   return (
@@ -22,6 +23,7 @@ export const Searcher = ({ searcher, topSongs }) => {
           return<Card key={element.id} element={element}/>
       })}
   </div>
+  <SearchResult/>
 </div> 
   )
 }
