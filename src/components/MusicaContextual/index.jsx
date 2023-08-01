@@ -3,6 +3,7 @@ import "../Register/index.css";
 import "./index.css";
 import { Link } from "react-router-dom";
 import { Buttons } from "../Buttons";
+import GenderItem from "./GenderItem";
 
 export const Contextual = () => {
   const [actividad, setActividad] = useState("Actividad");
@@ -170,9 +171,7 @@ export const Contextual = () => {
           <span className="contextual__title2">
             Selecciona hasta 3 géneros:
           </span>
-          <div className="contextual__gender">
-            <span className="contextual__gender-text">Funk</span>
-          </div>
+          <GenderItem Text={Reggae}/>
         </div>
       </div>
       <div className="contextual__button-div">
