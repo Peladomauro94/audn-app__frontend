@@ -512,3 +512,12 @@ div > .contHomeOff{
 .contFiltrosBusqueda::-webkit-scrollbar {
     display: none;
   }
+
+.contResult{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 70vh;
+    overflow: scroll;
+}

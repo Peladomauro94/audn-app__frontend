@@ -15,12 +15,16 @@ export const Searcher = ({ searcher, topSongs }) => {
   const updateResult = (e) => {
     e.preventDefault();
     const searchQuery = encodeURIComponent(searchState);
+    if(!searchQuery){
+        return
+    }
     fetch(`http://localhost:3000/songs/search?query=${searchQuery}`, {
       headers: { "auth-token": user },
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        setResult(data);
         setSearched(true);
       });
   };
@@ -36,6 +40,9 @@ export const Searcher = ({ searcher, topSongs }) => {
 
   const inputClickSearch = () => {
     setOnView("top");
+    setSearched(false);
+    setResult([]);
+    setSearchState('');
   };
 
   return (
@@ -115,11 +122,12 @@ export const Searcher = ({ searcher, topSongs }) => {
                 <GenderItem Text='Perfiles'/>
               </div>
               <p>Resultado sugerido:</p>
-              <SearchResult firstResult />
-              <SearchResult />
-              <SearchResult />
-              <SearchResult />
-              <SearchResult />
+              <div className="contResult">
+              <SearchResult firstResult title={result[0].name} description={result[0].type} />
+              {result && result.map((element)=>(
+                <SearchResult title={element.name} description={element.type} />
+              ))}
+              </div>
             </div>
           )}
         </div>
