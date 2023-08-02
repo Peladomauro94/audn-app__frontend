@@ -25,22 +25,27 @@ export const Register = () => {
   const { setUser, setUsername } = useAuth();
 
   const handleRegister = () => {
-    fetch(BASE_URL+"/register", {
+    fetch(BASE_URL + "/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username: name, email, password }),
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.error)
         if (!data.error) {
           setUser(data.token);
-          setUsername(data.username)
+          setUsername(data.username);
           localStorage.setItem("auth-token", data.token);
           console.log("registado");
           navigate("/home");
         } else {
-          setNameError("User name is already in use");
+          if (data.emailError) {
+            setOnView("submit1")
+            setEmailError("Ese email ya esta en uso");
+            setValidateEmail("failed");
+          } else if (data.usernameError) {
+            setNameError("Ese nombre de usuario ya esta en uso");
+          }
         }
       })
       .catch((error) => console.log(error));
@@ -155,15 +160,11 @@ export const Register = () => {
           }}
         >
           <div className="register-content">
-            <div className={
-                  onView === "submit1" ? "" : "d-none"
-                }>
+            <div className={onView === "submit1" ? "" : "d-none"}>
               <span className="register__question">
                 ¿Cuál es tu correo electrónico?
               </span>
-              <div
-                className={`register__form `}
-              >
+              <div className={`register__form `}>
                 <div className="register__input-div register__first-animation">
                   <label
                     className="register__input-label"
@@ -280,7 +281,7 @@ export const Register = () => {
             text={"Continuar"}
             onClick={registerButtonHanndle}
             style={`register__button-anmiation ${buttonActive}`}
-            disabled={buttonActive!=''}
+            disabled={buttonActive != ""}
           />
         </form>
       </div>
