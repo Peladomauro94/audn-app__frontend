@@ -22,7 +22,7 @@ export const Register = () => {
 
   const navigate = useNavigate();
 
-  const { setUser } = useAuth();
+  const { setUser, setUsername } = useAuth();
 
   const handleRegister = () => {
     fetch(BASE_URL+"/register", {
@@ -34,6 +34,7 @@ export const Register = () => {
       .then((data) => {
         if (!data.error) {
           setUser(data.token);
+          setUsername(data.username)
           localStorage.setItem("auth-token", data.token);
           console.log("registado");
           navigate("/home");
@@ -278,6 +279,7 @@ export const Register = () => {
             text={"Continuar"}
             onClick={registerButtonHanndle}
             style={`register__button-anmiation ${buttonActive}`}
+            disabled={buttonActive!=''}
           />
         </form>
       </div>

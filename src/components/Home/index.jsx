@@ -11,6 +11,7 @@ import { Profile } from './Sections/Profile';
 import Config from './Sections/Config';
 import { BASE_URL } from '../../services/audn-api';
 import { HomeContext } from '../../contexts/homeContext';
+import { useAuth } from '../../contexts/authContext';
 
 export const Homepage = () => {
 
@@ -20,15 +21,21 @@ export const Homepage = () => {
 
     const {home,searcher,user} = useContext(HomeContext)
 
+    const {user:token} = useAuth()
+
     useEffect(() => {
         fetch(BASE_URL+"/songs/top",{
             headers:{
-                'auth-token':localStorage.getItem('auth-token')
+                'auth-token':token
             }
         })
         .then(res=>res.json())
         .then(dataTop=>{
-            setTopSongs(dataTop)
+            if(!dataTop.error){
+                setTopSongs(dataTop)
+            }
+        }).catch(e=>{
+            console.error('error ocurred')
         })
     },[])
 
