@@ -9,6 +9,7 @@ import { Home } from './Sections/Home';
 import { Searcher } from './Sections/Searcher';
 import { Profile } from './Sections/Profile';
 import Config from './Sections/Config';
+import { BASE_URL } from '../../services/audn-api';
 
 export const Homepage = () => {
 
@@ -21,7 +22,7 @@ export const Homepage = () => {
 
 
     useEffect(() => {
-        fetch("http://localhost:3000/songs/top",{
+        fetch(BASE_URL+"/songs/top",{
             headers:{
                 'auth-token':localStorage.getItem('auth-token')
             }

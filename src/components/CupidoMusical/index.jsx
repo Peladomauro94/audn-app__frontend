@@ -3,8 +3,10 @@ import './index.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from "../../contexts/authContext";
 
-export const Cupido = () => {
+import {BASE_URL} from '../../services/audn-api'
 
+export const Cupido = () => {
+  console.log(BASE_URL)
   const [artist, setArtist] = useState([]);
   const [actual, setActual] = useState();
   const [currentSong, setCurrentSong] = useState(0);
@@ -14,7 +16,7 @@ export const Cupido = () => {
   const navigate = useNavigate();
 
   useEffect(()=>{
-    fetch('http://localhost:3000/artists/cupido',{headers:{'auth-token':user}})
+    fetch(BASE_URL+'/artists/cupido',{headers:{'auth-token':user}})
     .then(res=>res.json())
     .then(data=>{
       setArtist(data)
@@ -27,7 +29,7 @@ export const Cupido = () => {
       return item.id
     })
     console.log(artistIdList)
-    fetch('http://localhost:3000/playlists/cupido', {
+    fetch(BASE_URL+'/playlists/cupido', {
       method:'POST', 
       headers:{'auth-token':user, 'Content-Type':'application/json'},
       body:JSON.stringify({artistList : artistIdList})

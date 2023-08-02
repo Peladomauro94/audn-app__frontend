@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Buttons } from "../Buttons";
 import GenderItem from "./GenderItem";
 import { useAuth } from "../../contexts/authContext";
+import { BASE_URL } from "../../services/audn-api";
 
 export const Contextual = () => {
   const [actividad, setActividad] = useState("Actividad");
@@ -23,7 +24,7 @@ export const Contextual = () => {
   const navigate = useNavigate();
 
   useEffect(()=>{
-    fetch('http://localhost:3000/genders', {headers:{'auth-token':user}})
+    fetch(BASE_URL+'/genders', {headers:{'auth-token':user}})
     .then(res=>res.json())
     .then(data=>{
       setGenderList(data)
@@ -36,7 +37,7 @@ export const Contextual = () => {
     if(genderIdList.length<=0){
       return
     }
-    fetch('http://localhost:3000/playlists/musicacontextual', {
+    fetch(BASE_URL+'/playlists/musicacontextual', {
       method:'POST',
       headers:{'auth-token':user, 'Content-Type':'application/json'},
       body:JSON.stringify({genderList:genderIdList})

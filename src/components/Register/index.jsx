@@ -3,6 +3,7 @@ import "./index.css";
 import { Link, redirect, useNavigate } from "react-router-dom";
 import { Buttons } from "../Buttons";
 import { useAuth } from "../../contexts/authContext";
+import { BASE_URL } from "../../services/audn-api";
 
 export const Register = () => {
   const [onView, setOnView] = useState("submit1");
@@ -24,7 +25,7 @@ export const Register = () => {
   const { setUser } = useAuth();
 
   const handleRegister = () => {
-    fetch("http://localhost:3000/register", {
+    fetch(BASE_URL+"/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username: name, email, password }),

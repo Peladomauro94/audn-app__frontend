@@ -3,6 +3,7 @@ import { Card } from "../Card";
 import { SearchResult } from "../../SearchResult";
 import { useAuth } from "../../../contexts/authContext";
 import GenderItem from "../../MusicaContextual/GenderItem";
+import { BASE_URL } from "../../../services/audn-api";
 
 export const Searcher = ({ searcher, topSongs }) => {
   const [searchState, setSearchState] = useState("");
@@ -51,7 +52,7 @@ export const Searcher = ({ searcher, topSongs }) => {
     if(!searchQuery){
         return
     }
-    fetch(`http://localhost:3000/songs/search?query=${searchQuery}`, {
+    fetch(`${BASE_URL}/songs/search?query=${searchQuery}`, {
       headers: { "auth-token": user },
     })
       .then((res) => res.json())

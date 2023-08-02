@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000';
+const BASE_URL = process.env.NODE_ENV == 'development' ? 'http://localhost:3000' : 'http://54.39.73.63:3006';
 
 const getTopSongs = () => {
   return fetch(`${BASE_URL}/songs/top`, {
@@ -24,4 +24,4 @@ const checkCredentials = (username, password) => {
     });
 };
 
-export { getTopSongs, checkCredentials}
+export { getTopSongs, checkCredentials, BASE_URL}

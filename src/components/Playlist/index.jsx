@@ -4,6 +4,7 @@ import './index.css'
 import { Link, useParams } from 'react-router-dom'
 import { Song } from './Song'      
 import { useAuth } from '../../contexts/authContext'
+import { BASE_URL } from '../../services/audn-api'
 
 export const Playlist = () => {
 
@@ -14,7 +15,7 @@ export const Playlist = () => {
 
     useEffect(()=>{
         console.log(id)
-        fetch('http://localhost:3000/playlists/'+id, {
+        fetch(BASE_URL+'/playlists/'+id, {
             headers:{'auth-token':token}
         })
         .then(res=>res.json())

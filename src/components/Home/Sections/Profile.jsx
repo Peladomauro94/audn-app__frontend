@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { CardPlaylist } from '../CardPlaylist'
 import { Buttons } from '../../Buttons'
 import { useAuth } from '../../../contexts/authContext';
+import { BASE_URL } from '../../../services/audn-api';
 
 export const Profile = ({ user, handleConfiguration }) => {
 
@@ -10,7 +11,7 @@ export const Profile = ({ user, handleConfiguration }) => {
     const {user:token,username} = useAuth();
 
     useEffect(()=>{
-        fetch('http://localhost:3000/playlists/', {
+        fetch(BASE_URL+'/playlists/', {
             headers:{'auth-token':token}
         })
         .then(res=>res.json())
