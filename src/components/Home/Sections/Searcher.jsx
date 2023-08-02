@@ -63,12 +63,14 @@ export const Searcher = ({ searcher, topSongs }) => {
 
   const addLastSearch = (data) => {
     let newLastSearch = [...lastSearch];
-    if (newLastSearch.length >= 6) {
-      newLastSearch.pop();
+    if (newLastSearch[0].id != data.id || newLastSearch[0].type != data.type) {
+      if (newLastSearch.length >= 6) {
+        newLastSearch.pop();
+      }
+      newLastSearch.unshift(data);
+      setLastSearch(newLastSearch);
+      saveLocal(newLastSearch);
     }
-    newLastSearch.unshift(data);
-    setLastSearch(newLastSearch);
-    saveLocal(newLastSearch);
   };
 
   const removeLastSearch = (id, type) => {
@@ -99,7 +101,6 @@ export const Searcher = ({ searcher, topSongs }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setResult(data);
         setSearched(true);
         if (data[0]) {
