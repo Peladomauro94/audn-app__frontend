@@ -1,4 +1,4 @@
-const BASE_URL = process.env.NODE_ENV == 'development' ? 'http://localhost:3000' : 'http://54.39.73.63:3006';
+const BASE_URL = process.env.NODE_ENV == 'development' ? 'http://localhost:3000' : 'https://aund-app-backend.vercel.app';
 
 const getTopSongs = () => {
   return fetch(`${BASE_URL}/songs/top`, {
