@@ -32,6 +32,7 @@ export const Register = () => {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log(data.error)
         if (!data.error) {
           setUser(data.token);
           setUsername(data.username)

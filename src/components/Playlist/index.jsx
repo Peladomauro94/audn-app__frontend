@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Navbar } from '../Navbar'
 import './index.css'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { Song } from './Song'      
 import { useAuth } from '../../contexts/authContext'
 import { BASE_URL } from '../../services/audn-api'
@@ -14,7 +14,7 @@ export const Playlist = () => {
     const {id} = useParams();
     const {user:token} = useAuth();
 
-    const {handleHome} = useContext(HomeContext)
+    const navigate = useNavigate()
 
     useEffect(()=>{
         console.log(id)
@@ -23,10 +23,29 @@ export const Playlist = () => {
         })
         .then(res=>res.json())
         .then(data=>{
-            console.log(data)
+            if(data.error){
+                return navigate('/home')
+            }
+            let totalTime = 0
+            for(let i = 0; i<data.songs.length; i++){
+                totalTime+= parseInt(data.songs[i].time)
+            }
+
+            const duration = getDuration(totalTime)
+            data.duration = duration
             setData(data)
         })
     },[])
+
+    const getDuration = (totalTime) => {
+        const hour = Math.floor(totalTime / 3600)
+
+        totalTime = totalTime%3600
+
+        const minute = Math.floor(totalTime / 60)
+
+        return `${hour > 0 ? hour+'h ' : ''}${minute}m`
+    }
 
   return (<div className='contGeneral'>
     <div className='superior'> 
@@ -40,10 +59,10 @@ export const Playlist = () => {
         </div>
         <div className='contCentral'>
             <div className='contFotos'>
-                <img className='pic1' src="/mileycyrus.png" alt="" />
-                <img className='pic2' src="/mileycyrus.png" alt="" />
-                <img className='pic3' src="/mileycyrus.png" alt="" />
-                <img className='pic4' src="/mileycyrus.png" alt="" />
+                <img className='pic1' src={data ? data.songs[0]?.avatar_url : "/mileycyrus.png"} alt="" />
+                <img className='pic2' src={data ? data.songs[1]?.avatar_url : "/mileycyrus.png"} alt="" />
+                <img className='pic3' src={data ? data.songs[2]?.avatar_url : "/mileycyrus.png"} alt="" />
+                <img className='pic4' src={data ? data.songs[3]?.avatar_url : "/mileycyrus.png"} alt="" />
             </div>
         </div>
         <div className='contIconos'>
@@ -53,7 +72,7 @@ export const Playlist = () => {
                 <img src="/compartir.svg" alt="" />
             </div>
             <div className='iconRigth'> 
-                <p className='duracionText'>Duracion</p>
+                <p className='duracionText'>{data && data.duration}</p>
                 <img src="/history.svg" alt="" />
             </div>
         </div>

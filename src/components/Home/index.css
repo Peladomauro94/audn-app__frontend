@@ -252,7 +252,7 @@ div > .contHomeOff{
     margin-top: 50px;
 }
 
-.contUser__top > div{
+.userSettings{
     background-color: #fdfeff48;
     border-radius: 100%;
     height: 48px;
@@ -265,17 +265,25 @@ div > .contHomeOff{
     align-items: center;
 }
 
-.contUser__top > div > img{
+.userSettings > img{
     position: relative;
     height: 24px;
     width: 24px;
 
 }
 
-.contUser__top > img {
+.userAvatar {
     border-radius: 100%;
-    width: 152px;
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     box-shadow: 0 0px 20px #0808115b;
+}
+
+.userAvatar img{
+    width: 80%;
 }
 
 .contUser__top > h1 {

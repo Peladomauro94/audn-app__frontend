@@ -16,7 +16,6 @@ export const Profile = ({ user, handleConfiguration }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setPlaylist(data);
       });
   }, []);
@@ -25,10 +24,12 @@ export const Profile = ({ user, handleConfiguration }) => {
     <div className={`contUser${user}`}>
       <div className="contUser__general animation__insideRight">
         <div className="contUser__top">
-          <div>
+          <div className="userSettings">
             <img src="/nut.svg" alt="nut" onClick={handleConfiguration} />
           </div>
-          <img src="/mileycyrus.png" alt="" />
+          <div className="userAvatar">
+            <img src="/avatar.png" alt="" />
+          </div>
           <h1>{username}</h1>
           <span>@{username}</span>
         </div>
