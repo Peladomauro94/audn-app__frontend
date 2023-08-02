@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../Register/index.css";
 import "./index.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Buttons } from "../Buttons";
 import GenderItem from "./GenderItem";
+import { useAuth } from "../../contexts/authContext";
 
 export const Contextual = () => {
   const [actividad, setActividad] = useState("Actividad");
@@ -15,6 +16,55 @@ export const Contextual = () => {
   const [actividadSelected, setActividadSelected] = useState("");
   const [anmioSelected, setAnimoSelected] = useState("");
   const [climaSelected, setClimaSelected] = useState("");
+  const [genderList, setGenderList] = useState([]);
+  const [selectedGenderCount, setSelectedGenderCount] = useState(0);
+
+  const {user} = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    fetch('http://localhost:3000/genders', {headers:{'auth-token':user}})
+    .then(res=>res.json())
+    .then(data=>{
+      setGenderList(data)
+    })
+  },[])
+
+  const createPlaylist = () => {
+    const genderIdList = genderList.filter(item=>item.selected===true).map(item=>parseInt(item.id))
+    console.log(genderIdList)
+    if(genderIdList.length<=0){
+      return
+    }
+    fetch('http://localhost:3000/playlists/musicacontextual', {
+      method:'POST',
+      headers:{'auth-token':user, 'Content-Type':'application/json'},
+      body:JSON.stringify({genderList:genderIdList})
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      console.log(data)
+      if(data.playlist_id){
+        navigate('/playlist/'+data.playlist_id)
+      }
+    })
+  }
+
+  const selectGender = (text) =>{
+    console.log(text)
+    const newGenderList = [...genderList]
+    const genderIndex = newGenderList.findIndex(item=>(item.name==text))
+    let genderItem = newGenderList[genderIndex]
+    if(!genderItem.selected && selectedGenderCount <3 ){
+    genderItem = {...genderItem,selected:true}
+    setSelectedGenderCount(selectedGenderCount+1)
+    }else{
+    genderItem = {...genderItem,selected:false}
+    setSelectedGenderCount(selectedGenderCount-1)
+    }
+    newGenderList[genderIndex] = genderItem
+    setGenderList(newGenderList)
+  }
 
   const handleActividadChange = (option) => {
     setActividad(option);
@@ -171,11 +221,15 @@ export const Contextual = () => {
           <span className="contextual__title2">
             Selecciona hasta 3 géneros:
           </span>
-          <GenderItem Text={"Reggae"}/>
+          <div className="contGenders">
+            {genderList && genderList.map((element)=>(
+                <GenderItem key={element.id} Text={element.name} handleClick={selectGender} Active={element.selected}/>
+            ))}
+          </div>
         </div>
       </div>
       <div className="contextual__button-div">
-        <Buttons text={"Crear Playlist"} style={"contextual__button-create"}/>
+        <Buttons text={"Crear Playlist"} style={`contextual__button-create  ${selectedGenderCount>=1 ? '' : 'disabled'}`} onClick={createPlaylist} />
       </div>
     </div>
   );

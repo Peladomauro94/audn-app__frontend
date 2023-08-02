@@ -5,7 +5,7 @@ function GenderItem({ Text, Active, handleClick }) {
 
 
   return (
-    <div className={`contextual__gender ${Active?"active":""}`} onClick={handleClick}>
+    <div className={`contextual__gender ${Active?"active":""}`} onClick={()=>handleClick(Text)}>
     <span className="contextual__gender-text" >{Text}</span>
   </div>
   )

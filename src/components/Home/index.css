@@ -137,7 +137,7 @@ div > .contHomeOff{
 
 .searcherInput{
     background-color: transparent;
-    width: 80%;
+    width: 75%;
     margin-left: 20px;
     font-family: 'Rubik', sans-serif;
     font-size: 16px;
@@ -514,10 +514,14 @@ div > .contHomeOff{
   }
 
 .contResult{
-    width: 100%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 70vh;
     overflow: scroll;
+}
+
+.cruzBusqueda{
+    width: 5%;
 }

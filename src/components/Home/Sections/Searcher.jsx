@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Card } from "../Card";
 import { SearchResult } from "../../SearchResult";
 import { useAuth } from "../../../contexts/authContext";
@@ -9,6 +9,39 @@ export const Searcher = ({ searcher, topSongs }) => {
   const [result, setResult] = useState([]);
   const [onView, setOnView] = useState("top");
   const [searched, setSearched] = useState(false);
+  const [lastSearch, setLastSearch] = useState([]);
+
+  useEffect(()=>{
+    const lastSearchLocalStorage = localStorage.getItem('audn_last_search');
+    console.log(lastSearchLocalStorage)
+    if(lastSearchLocalStorage){
+      setLastSearch(JSON.parse(lastSearchLocalStorage))
+    }
+  },[])
+
+  const saveLocal = (data) => {
+    localStorage.setItem('audn_last_search', JSON.stringify(data))
+  }
+  
+  const addLastSearch = (data) => {
+    let newLastSearch = [...lastSearch]
+    if(newLastSearch.length>=6){
+      newLastSearch.pop()
+    }
+    newLastSearch.unshift(data)
+    setLastSearch(newLastSearch)
+    console.log(newLastSearch)
+    saveLocal(newLastSearch)
+  }
+
+  const removeLastSearch = (id , type) => {
+    let newLastSearch = [...lastSearch]
+    const searchIndex = newLastSearch.findIndex((item)=>item.id==id && item.type==type)
+    newLastSearch.splice(searchIndex,1)
+    setLastSearch(newLastSearch)
+    saveLocal(newLastSearch)
+  }
+
 
   const { user } = useAuth();
 
@@ -26,6 +59,9 @@ export const Searcher = ({ searcher, topSongs }) => {
         console.log(data);
         setResult(data);
         setSearched(true);
+        if(data[0]){
+          addLastSearch(data[0]);
+        }
       });
   };
 
@@ -44,6 +80,12 @@ export const Searcher = ({ searcher, topSongs }) => {
     setResult([]);
     setSearchState('');
   };
+
+  const closeSearching = () => {
+    setSearched(false);
+    setResult([]);
+    setSearchState('');
+  }
 
   return (
     <div className={`contSearcher${searcher}`}>
@@ -95,6 +137,7 @@ export const Searcher = ({ searcher, topSongs }) => {
               type="text"
               placeholder="¿Qué deseas escuchar?"
             />
+            {searched && <img onClick={closeSearching} className="cruzBusqueda" src="/cross.svg" />}
           </form>
           {!searched ? (
             <div className="contBusReciente">
@@ -104,11 +147,9 @@ export const Searcher = ({ searcher, topSongs }) => {
               </div>
 
               <div className="recienteLista">
-                <SearchResult />
-                <SearchResult />
-                <SearchResult />
-                <SearchResult />
-                <SearchResult />
+              {lastSearch && lastSearch.map((element)=>(
+                <SearchResult key={element.id} id={element.id} title={element.name} close type={element.type} img={element.img_url} artist={element.artist_name} handleClick={removeLastSearch} />
+              )) }
               </div>
             </div>
           ) : (
@@ -123,9 +164,9 @@ export const Searcher = ({ searcher, topSongs }) => {
               </div>
               <p>Resultado sugerido:</p>
               <div className="contResult">
-              <SearchResult firstResult title={result[0].name} description={result[0].type} />
-              {result && result.map((element)=>(
-                <SearchResult title={element.name} description={element.type} />
+              {result[0] && <SearchResult firstResult title={result[0].name} type={result[0].type} img={result[0].img_url} artist={result[0].artist_name} /> }
+              {result && result.slice(1).map((element)=>(
+                <SearchResult title={element.name} type={element.type} img={element.img_url} artist={element.artist_name} />
               ))}
               </div>
             </div>
