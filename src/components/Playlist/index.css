@@ -155,7 +155,7 @@
     flex-direction: column;
     align-items: center;
     gap: 1vh;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .cancionSt{

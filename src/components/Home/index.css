@@ -326,7 +326,7 @@ div > .contHomeOff{
     flex-wrap: wrap;
     gap: 2%;
     justify-content: center;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .contPlaylist__playlist{
