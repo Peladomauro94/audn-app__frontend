@@ -63,7 +63,7 @@ export const Searcher = ({ searcher, topSongs }) => {
 
   const addLastSearch = (data) => {
     let newLastSearch = [...lastSearch];
-    if (newLastSearch[0].id != data.id || newLastSearch[0].type != data.type) {
+    if (newLastSearch[0].id != data.id || newLastSearch[0].type != data.type) { 
       if (newLastSearch.length >= 6) {
         newLastSearch.pop();
       }
