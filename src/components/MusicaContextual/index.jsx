@@ -59,9 +59,9 @@ export const Contextual = () => {
     if(!genderItem.selected && selectedGenderCount <3 ){
     genderItem = {...genderItem,selected:true}
     setSelectedGenderCount(selectedGenderCount+1)
-    }else{
-    genderItem = {...genderItem,selected:false}
-    setSelectedGenderCount(selectedGenderCount-1)
+    }else if(genderItem.selected){
+      genderItem = {...genderItem,selected:false}
+      setSelectedGenderCount(selectedGenderCount-1)
     }
     newGenderList[genderIndex] = genderItem
     setGenderList(newGenderList)
