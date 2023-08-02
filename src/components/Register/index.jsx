@@ -36,6 +36,7 @@ export const Register = () => {
           setUser(data.token);
           setUsername(data.username);
           localStorage.setItem("auth-token", data.token);
+          localStorage.setItem("auth-username", data.username);
           console.log("registado");
           navigate("/home");
         } else {

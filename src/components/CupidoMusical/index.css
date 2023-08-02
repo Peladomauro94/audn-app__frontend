@@ -41,7 +41,8 @@
 
 .imgCupido{
     margin-top: 15%;
-    width: 95%;
+    width: 300px;
+    height: 300px;
     border-top-right-radius: 48px;
     border-bottom-left-radius: 48px;
 }
