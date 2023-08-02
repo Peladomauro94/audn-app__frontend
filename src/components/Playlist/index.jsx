@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Navbar } from '../Navbar'
 import './index.css'
 import { Link, useParams } from 'react-router-dom'
 import { Song } from './Song'      
 import { useAuth } from '../../contexts/authContext'
 import { BASE_URL } from '../../services/audn-api'
+import { HomeContext } from '../../contexts/homeContext'
 
 export const Playlist = () => {
 
@@ -12,6 +13,8 @@ export const Playlist = () => {
 
     const {id} = useParams();
     const {user:token} = useAuth();
+
+    const {handleHome} = useContext(HomeContext)
 
     useEffect(()=>{
         console.log(id)
@@ -24,9 +27,6 @@ export const Playlist = () => {
             setData(data)
         })
     },[])
-
-
-
 
   return (<div className='contGeneral'>
     <div className='superior'> 
@@ -73,7 +73,7 @@ export const Playlist = () => {
              })}
         </div>
     </div>
-    <Navbar home='On' searcher='Off' user='Off' />
+    <Navbar />
 </div>
   )
 }

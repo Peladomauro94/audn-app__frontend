@@ -5,52 +5,94 @@ import { useAuth } from "../../../contexts/authContext";
 import GenderItem from "../../MusicaContextual/GenderItem";
 import { BASE_URL } from "../../../services/audn-api";
 
+const filters = [
+  {
+    label: "Top",
+    value: "top",
+  },
+  {
+    label: "Canciones",
+    value: "song",
+  },
+  {
+    label: "Albumes",
+    value: "album",
+  },
+  {
+    label: "Artistas",
+    value: "artist",
+  },
+  {
+    label: "Playlists",
+    value: "playlist",
+  },
+  {
+    label: "Perfiles",
+    value: "profile",
+  },
+];
+
 export const Searcher = ({ searcher, topSongs }) => {
   const [searchState, setSearchState] = useState("");
   const [result, setResult] = useState([]);
   const [onView, setOnView] = useState("top");
   const [searched, setSearched] = useState(false);
   const [lastSearch, setLastSearch] = useState([]);
-
-  useEffect(()=>{
-    const lastSearchLocalStorage = localStorage.getItem('audn_last_search');
-    console.log(lastSearchLocalStorage)
-    if(lastSearchLocalStorage){
-      setLastSearch(JSON.parse(lastSearchLocalStorage))
-    }
-  },[])
-
-  const saveLocal = (data) => {
-    localStorage.setItem('audn_last_search', JSON.stringify(data))
-  }
-  
-  const addLastSearch = (data) => {
-    let newLastSearch = [...lastSearch]
-    if(newLastSearch.length>=6){
-      newLastSearch.pop()
-    }
-    newLastSearch.unshift(data)
-    setLastSearch(newLastSearch)
-    console.log(newLastSearch)
-    saveLocal(newLastSearch)
-  }
-
-  const removeLastSearch = (id , type) => {
-    let newLastSearch = [...lastSearch]
-    const searchIndex = newLastSearch.findIndex((item)=>item.id==id && item.type==type)
-    newLastSearch.splice(searchIndex,1)
-    setLastSearch(newLastSearch)
-    saveLocal(newLastSearch)
-  }
-
+  const [searchFilter, setSearchFilter] = useState("top");
 
   const { user } = useAuth();
 
-  const updateResult = (e) => {
-    e.preventDefault();
-    const searchQuery = encodeURIComponent(searchState);
-    if(!searchQuery){
-        return
+  const updateFilter = (text) => {
+    setSearchFilter(text.toLowerCase());
+  };
+
+  const filteredResult = result.filter(
+    (item) => searchFilter == "top" || item.type == searchFilter
+  );
+
+  useEffect(() => {
+    const lastSearchLocalStorage = localStorage.getItem("audn_last_search");
+    if (lastSearchLocalStorage) {
+      setLastSearch(JSON.parse(lastSearchLocalStorage));
+    }
+  }, []);
+
+  const saveLocal = (data) => {
+    localStorage.setItem("audn_last_search", JSON.stringify(data));
+  };
+
+  const addLastSearch = (data) => {
+    let newLastSearch = [...lastSearch];
+    if (newLastSearch.length >= 6) {
+      newLastSearch.pop();
+    }
+    newLastSearch.unshift(data);
+    setLastSearch(newLastSearch);
+    saveLocal(newLastSearch);
+  };
+
+  const removeLastSearch = (id, type) => {
+    let newLastSearch = [...lastSearch];
+    const searchIndex = newLastSearch.findIndex(
+      (item) => item.id == id && item.type == type
+    );
+    newLastSearch.splice(searchIndex, 1);
+    setLastSearch(newLastSearch);
+    saveLocal(newLastSearch);
+  };
+
+  const searchByLastResult = (title) => {
+    console.log("setting search to " + title);
+    setSearchState(title);
+    updateResult(null, title);
+  };
+
+  const updateResult = (e, query) => {
+    if (e) e.preventDefault();
+
+    const searchQuery = encodeURIComponent(query || searchState);
+    if (!searchQuery) {
+      return;
     }
     fetch(`${BASE_URL}/songs/search?query=${searchQuery}`, {
       headers: { "auth-token": user },
@@ -60,7 +102,7 @@ export const Searcher = ({ searcher, topSongs }) => {
         console.log(data);
         setResult(data);
         setSearched(true);
-        if(data[0]){
+        if (data[0]) {
           addLastSearch(data[0]);
         }
       });
@@ -79,14 +121,14 @@ export const Searcher = ({ searcher, topSongs }) => {
     setOnView("top");
     setSearched(false);
     setResult([]);
-    setSearchState('');
+    setSearchState("");
   };
 
   const closeSearching = () => {
     setSearched(false);
     setResult([]);
-    setSearchState('');
-  }
+    setSearchState("");
+  };
 
   return (
     <div className={`contSearcher${searcher}`}>
@@ -138,7 +180,13 @@ export const Searcher = ({ searcher, topSongs }) => {
               type="text"
               placeholder="¿Qué deseas escuchar?"
             />
-            {searched && <img onClick={closeSearching} className="cruzBusqueda" src="/cross.svg" />}
+            {searched && (
+              <img
+                onClick={closeSearching}
+                className="cruzBusqueda"
+                src="/cross.svg"
+              />
+            )}
           </form>
           {!searched ? (
             <div className="contBusReciente">
@@ -148,27 +196,57 @@ export const Searcher = ({ searcher, topSongs }) => {
               </div>
 
               <div className="recienteLista">
-              {lastSearch && lastSearch.map((element)=>(
-                <SearchResult key={element.id} id={element.id} title={element.name} close type={element.type} img={element.img_url} artist={element.artist_name} handleClick={removeLastSearch} />
-              )) }
+                {lastSearch &&
+                  lastSearch.map((element, index) => (
+                    <SearchResult
+                      key={index}
+                      id={element.id}
+                      title={element.name}
+                      close
+                      type={element.type}
+                      img={element.img_url}
+                      artist={element.artist_name}
+                      handleClick={searchByLastResult}
+                      handleRemoveClick={removeLastSearch}
+                    />
+                  ))}
               </div>
             </div>
           ) : (
             <div className="contBusquedaFinal">
               <div className="contFiltrosBusqueda">
-                <GenderItem Text='Top' Active />
-                <GenderItem Text='Canciones'/>
-                <GenderItem Text='Albumes'/>
-                <GenderItem Text='Artistas'/>
-                <GenderItem Text='Playlist'/>
-                <GenderItem Text='Perfiles'/>
+                {filters.map((element, index) => (
+                  <GenderItem
+                    key={index}
+                    Text={element.label}
+                    handleClick={() => updateFilter(element.value)}
+                    Active={searchFilter == element.value}
+                  />
+                ))}
               </div>
               <p>Resultado sugerido:</p>
               <div className="contResult">
-              {result[0] && <SearchResult firstResult title={result[0].name} type={result[0].type} img={result[0].img_url} artist={result[0].artist_name} /> }
-              {result && result.slice(1).map((element)=>(
-                <SearchResult title={element.name} type={element.type} img={element.img_url} artist={element.artist_name} />
-              ))}
+                {filteredResult[0] && (
+                  <SearchResult
+                    firstResult
+                    title={filteredResult[0].name}
+                    type={filteredResult[0].type}
+                    img={filteredResult[0].img_url}
+                    artist={filteredResult[0].artist_name}
+                  />
+                )}
+                {filteredResult &&
+                  filteredResult
+                    .slice(1)
+                    .map((element) => (
+                      <SearchResult
+                        key={element.id}
+                        title={element.name}
+                        type={element.type}
+                        img={element.img_url}
+                        artist={element.artist_name}
+                      />
+                    ))}
               </div>
             </div>
           )}

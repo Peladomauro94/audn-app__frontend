@@ -492,6 +492,7 @@ div > .contHomeOff{
     flex-direction: column;
     width: 90%;
     margin-top: 40px;
+    gap: 8px;
 }
 
 .contBusquedaFinal{
@@ -520,6 +521,11 @@ div > .contHomeOff{
     align-items: center;
     height: 70vh;
     overflow: scroll;
+    gap: 4px;
+}
+
+.contResult div:first-child{
+    margin-bottom: 10px;
 }
 
 .cruzBusqueda{
